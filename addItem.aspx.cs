@@ -76,11 +76,18 @@ namespace FinalProyect_MaxiPrograma_LVL3
             else
             {
                 negocio.modify(item, int.Parse(Request.QueryString["Id"]));
-                temporal.Clear();
-                Session.Add("ItemList", negocio.toListWithProcedure());
+                temporal.Remove(temporal.Find(x => x.Id == int.Parse(Request.QueryString["Id"])));
+                temporal.Add(item);
+                //temporal.Clear();
+                //Session.Add("ItemList", negocio.toListWithProcedure());
 
             }
             Response.Redirect("Default.aspx", false);
+        }
+
+        protected void txtUrlImage_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

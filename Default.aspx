@@ -16,6 +16,8 @@
             <asp:BoundField DataField="UrlImage" Visible="false" HeaderText="Image" />
             <asp:BoundField DataField="TradeDesciption" HeaderText="Trademark" />
             <asp:boundField DataField="CategoryDescription" HeaderText ="Category" />
+            <asp:CommandField HeaderText="Modify" ShowSelectButton="true" SelectText="✏️" />
+            
         </columns>
     </asp:GridView>
     <asp:Button ID="btnAdd" cssClass="btn btn-lg btn-primary" runat="server" Text="Add" OnClick="btnAdd_Click" />
