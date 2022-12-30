@@ -23,6 +23,7 @@
                 <div class="mb-3">
                     <label for="txtPrice" class="form-label">Price</label>
                     <asp:TextBox ID="txtPrice" runat="server"></asp:TextBox>
+                    <asp:RangeValidator ErrorMessage="Solo Numeros" ControlToValidate="txtPrice" runat="server" type="Double" Display="Static"/>
 
                 </div>
                 <div class="mb-3">

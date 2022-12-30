@@ -4,6 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using dominio;
+using FinalProyect_MaxiPrograma_LVL3.dominio;
+using FinalProyect_MaxiPrograma_LVL3.negocio;
+using negocio;
 
 namespace FinalProyect_MaxiPrograma_LVL3
 {
@@ -14,13 +18,28 @@ namespace FinalProyect_MaxiPrograma_LVL3
 
         }
 
-        protected void btnIngresar_Click(object sender, EventArgs e)
+        protected void btnLogin_Click(object sender, EventArgs e)
         {
+            UserClass user = new UserClass(txtPassword.Text, txtEmail.Text, false);
+            UserNegocio userNegocio = new UserNegocio();
+            try
+            {
 
-        }
-
-        protected void btnRegistrarse_Click(object sender, EventArgs e)
-        {
+                if (userNegocio.login(user))
+                {
+                    Session.Add("User", user);
+                    Response.Redirect("Default.aspx");
+                }
+                else
+                {
+                    Session.Add("Error", "Usuario o contraseña incorrectos");
+                    Response.Redirect("Error.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
         }
     }

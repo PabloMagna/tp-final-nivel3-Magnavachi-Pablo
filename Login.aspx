@@ -13,6 +13,6 @@
     </div>
     <div class="col-12">
         <br />
-        <asp:Button Text="btnGuardar" cssClass="btn-primary" runat="server" />
+        <asp:Button ID="btnLogin" Text="Login" cssClass="btn-primary" runat="server" OnClick="btnLogin_Click"/>
     </div>
 </asp:Content>

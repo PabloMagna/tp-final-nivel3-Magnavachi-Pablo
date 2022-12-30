@@ -74,6 +74,7 @@
     <Content Include="dominio\obj\Debug\dominio.dll" />
     <Content Include="dominio\obj\Debug\dominio.pdb" />
     <Content Include="addItem.aspx" />
+    <Content Include="Error.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Login.aspx" />
     <Content Include="negocio\bin\Debug\dominio.dll" />
@@ -105,6 +106,14 @@
     <Compile Include="addItem.aspx.designer.cs">
       <DependentUpon>addItem.aspx</DependentUpon>
     </Compile>
+    <Compile Include="dominio\UserClass.cs" />
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -128,6 +137,8 @@
     <Compile Include="MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
+    <Compile Include="negocio\UserNegocio.cs" />
+    <Compile Include="Security.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="dominio\dominio.csproj" />
