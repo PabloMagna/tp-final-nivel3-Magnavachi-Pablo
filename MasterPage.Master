@@ -31,6 +31,17 @@
                         </div>
                     </div>
                 </div>
+                <div class="d-flex">
+                    <%if (!FinalProyect_MaxiPrograma_LVL3.Security.isLogged(Session["user"]))
+                        {  %>
+                    <a href="Login.aspx" class="btn btn-outline-primary me-2">Login</a>
+                    <a href="Register.aspx" class="btn btn-outline-primary">Register</a>
+                    <% }
+                        else
+                        { %>
+                    <asp:Button ID="btnLogout" CssClass="btn btn-outline-primary me-2" Text="Logout" runat="server" OnClick="btnLogout_Click"/>
+                    <% }%>
+                </div>
             </nav>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>

@@ -20,5 +20,10 @@ namespace FinalProyect_MaxiPrograma_LVL3
             }
 
         }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
