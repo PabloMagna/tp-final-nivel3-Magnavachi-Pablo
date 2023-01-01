@@ -20,7 +20,8 @@ namespace FinalProyect_MaxiPrograma_LVL3
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            UserClass user = new UserClass(txtPassword.Text, txtEmail.Text, false);
+
+            UserClass user = new UserClass(txtEmail.Text,txtPassword.Text,  false);
             UserNegocio userNegocio = new UserNegocio();
             try
             {

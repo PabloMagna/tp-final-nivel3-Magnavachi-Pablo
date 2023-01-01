@@ -84,6 +84,7 @@
     <Content Include="negocio\obj\Debug\negocio.csproj.FileListAbsolute.txt" />
     <Content Include="negocio\obj\Debug\negocio.dll" />
     <Content Include="negocio\obj\Debug\negocio.pdb" />
+    <Content Include="Register.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +139,13 @@
       <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
     <Compile Include="negocio\UserNegocio.cs" />
+    <Compile Include="Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Security.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -164,6 +172,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="dominio\obj\Debug\TempPE\" />
+    <Folder Include="Images\" />
     <Folder Include="Models\" />
     <Folder Include="negocio\obj\Debug\TempPE\" />
     <Folder Include="Properties\" />

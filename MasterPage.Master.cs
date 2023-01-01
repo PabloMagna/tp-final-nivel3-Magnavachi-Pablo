@@ -11,7 +11,7 @@ namespace FinalProyect_MaxiPrograma_LVL3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!(Page is Login||Page is Error))
+            if (!(Page is Login||Page is Error || Page is Register))
             {
                 if (!Security.isLogged(Session["User"]))
                 {
@@ -23,7 +23,8 @@ namespace FinalProyect_MaxiPrograma_LVL3
 
         protected void btnLogout_Click(object sender, EventArgs e)
         {
-
+            Session["User"] = null;
+            Response.Redirect("Login.aspx");
         }
     }
 }

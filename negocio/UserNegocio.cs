@@ -38,5 +38,26 @@ namespace FinalProyect_MaxiPrograma_LVL3.negocio
                 data.closeConnection();
             }
         }
+        public void register(UserClass user)
+        {
+            DataAccess data = new DataAccess();
+            try
+            {
+                data.settingQuery("insert into Usuarios (UserName,Password,UserType,active) values (@user,@pass,@type,1)");
+                data.settingParametter("@user", user.UserName);
+                data.settingParametter("@pass", user.Password);
+                data.settingParametter("@type", user.TypeUser == typeUser.Admin ? 2 : 1);
+                data.executeQuery();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                data.closeConnection();
+            }
+        }
     }
 }
