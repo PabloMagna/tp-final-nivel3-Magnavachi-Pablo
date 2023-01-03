@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalProyect_MaxiPrograma_LVL3.dominio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +17,11 @@ namespace FinalProyect_MaxiPrograma_LVL3
                 if (!Security.isLogged(Session["User"]))
                 {
                     Response.Redirect("Login.aspx");
+                }
+                else
+                {
+                    UserClass user = (UserClass)Session["User"];
+                    imgProfile.ImageUrl = "~/Images/" + user.UrlImagen;
                 }
             }
 

@@ -76,6 +76,7 @@
     <Content Include="addItem.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Images\noImage.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="negocio\bin\Debug\dominio.dll" />
     <Content Include="negocio\bin\Debug\dominio.pdb" />
@@ -172,7 +173,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="dominio\obj\Debug\TempPE\" />
-    <Folder Include="Images\" />
     <Folder Include="Models\" />
     <Folder Include="negocio\obj\Debug\TempPE\" />
     <Folder Include="Properties\" />

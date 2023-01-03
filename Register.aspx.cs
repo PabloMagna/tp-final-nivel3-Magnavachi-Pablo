@@ -22,8 +22,20 @@ namespace FinalProyect_MaxiPrograma_LVL3
         {
             if (txtPassword.Text == txtConfirmPassword.Text)
             {
-                UserClass user = new UserClass( txtPassword.Text,txtEmail.Text, false);
+                
+                UserClass user = new UserClass(txtEmail.Text, txtPassword.Text, false);
                 UserNegocio negocio = new UserNegocio();
+                if (inpImage.PostedFile.FileName != "")
+                {
+                    string imagePath = Server.MapPath("./Images/");
+                    inpImage.PostedFile.SaveAs(imagePath + "profile-" + user.Id + ".jpg");
+                    user.UrlImagen = "profile-" + user.Id + ".jpg";
+                }
+                else
+                {
+                    user.UrlImagen = "noImage.jpg";
+                }
+                user.UserName = txtName.Text;
                 negocio.register(user);
 
                 // Redirect to the login page

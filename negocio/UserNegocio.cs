@@ -15,8 +15,8 @@ namespace FinalProyect_MaxiPrograma_LVL3.negocio
             DataAccess data = new DataAccess();
             try
             {
-                data.settingQuery("select id,UserType from Usuarios where @user = UserName and @pass = Password and active = 1");
-                data.settingParametter("@user", user.UserName);
+                data.settingQuery("select id,UserType,UserName,UrlImage from Usuarios where @Email= Email and @pass = Pass and active = 1");
+                data.settingParametter("@Email", user.Email);
                 data.settingParametter("@pass", user.Password);
 
                 data.executeQuery();
@@ -24,6 +24,8 @@ namespace FinalProyect_MaxiPrograma_LVL3.negocio
                 {
                     user.Id = (int)data.Reader["id"];
                     user.TypeUser = (int)data.Reader["UserType"] == 2 ? typeUser.Admin : typeUser.User;
+                    user.UserName = (string)data.Reader["UserName"];
+                    user.UrlImagen = (string)data.Reader["UrlImage"];
                     return true;
                 }
                 return false;
@@ -43,10 +45,12 @@ namespace FinalProyect_MaxiPrograma_LVL3.negocio
             DataAccess data = new DataAccess();
             try
             {
-                data.settingQuery("insert into Usuarios (UserName,Password,UserType,active) values (@user,@pass,@type,1)");
-                data.settingParametter("@user", user.UserName);
+                data.settingQuery("insert into Usuarios (Email,Pass,UserType,UrlImage,UserName,active) values (@email,@pass,@type,@img,@user,1)");
+                data.settingParametter("@email", user.Email);
                 data.settingParametter("@pass", user.Password);
                 data.settingParametter("@type", user.TypeUser == typeUser.Admin ? 2 : 1);
+                data.settingParametter("@img", user.UrlImagen);
+                data.settingParametter("@user", user.UserName);
                 data.executeQuery();
             }
             catch (Exception)
