@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
+using System.Web.Compilation;
 using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -14,13 +16,14 @@ namespace FinalProyect_MaxiPrograma_LVL3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+                ItemNegocio negocio = new ItemNegocio();
             if (Session["ItemList"] == null)
             {
-                ItemNegocio negocio = new ItemNegocio();
                 Session.Add("ItemList", negocio.toListWithProcedure());
             }
-
-            dgvList.DataSource = Session["ItemList"];
+             //temporal = (List<Items>)Session["ItemList"];
+            List<Items>temporal =  negocio.toListWithProcedure();
+            dgvList.DataSource = temporal;
             dgvList.DataBind();
         }
 

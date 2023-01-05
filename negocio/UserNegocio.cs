@@ -63,5 +63,29 @@ namespace FinalProyect_MaxiPrograma_LVL3.negocio
                 data.closeConnection();
             }
         }
+        public void modify(UserClass user)
+        {
+            DataAccess data = new DataAccess();
+            try
+            {
+                data.settingQuery("update Usuarios set Email = @email,Pass = @pass,UserType = @type,UrlImage = @img,UserName = @user,active = 1 where id = @id");
+                data.settingParametter("@id", user.Id);
+                data.settingParametter("@email", user.Email);
+                data.settingParametter("@pass", user.Password);
+                data.settingParametter("@type", user.TypeUser == typeUser.Admin ? 2 : 1);
+                data.settingParametter("@img", user.UrlImagen);
+                data.settingParametter("@user", user.UserName);
+                data.executeQuery();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                data.closeConnection();
+            }
+        }
     }
 }

@@ -78,6 +78,7 @@
     <Content Include="Global.asax" />
     <Content Include="Images\noImage.jpg" />
     <Content Include="Login.aspx" />
+    <Content Include="MyProfile.aspx" />
     <Content Include="negocio\bin\Debug\dominio.dll" />
     <Content Include="negocio\bin\Debug\dominio.pdb" />
     <Content Include="negocio\bin\Debug\negocio.dll" />
@@ -125,6 +126,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MyProfile.aspx.cs">
+      <DependentUpon>MyProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyProfile.aspx.designer.cs">
+      <DependentUpon>MyProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="negocio\CategoryNegocio.cs" />
     <Compile Include="negocio\DataAccess.cs" />

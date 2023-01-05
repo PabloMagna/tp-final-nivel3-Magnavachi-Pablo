@@ -48,7 +48,7 @@ namespace FinalProyect_MaxiPrograma_LVL3
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgProfile;
+        protected global::System.Web.UI.WebControls.ImageButton imgProfile;
 
         /// <summary>
         /// Control ContentPlaceHolder1.

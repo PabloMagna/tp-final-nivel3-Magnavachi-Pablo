@@ -75,14 +75,15 @@ namespace FinalProyect_MaxiPrograma_LVL3
             }
             else
             {
-                negocio.modify(item, int.Parse(Request.QueryString["Id"]));
-                temporal.Remove(temporal.Find(x => x.Id == int.Parse(Request.QueryString["Id"])));
-                temporal.Add(item);
+                Items aux = temporal.Find(x => x.Id == int.Parse(Request.QueryString["Id"]));
+                aux = item;
+                negocio.modify(aux, int.Parse(Request.QueryString["Id"]));
+                //negocio.modify(item, int.Parse(Request.QueryString["Id"]));
                 //temporal.Clear();
                 //Session.Add("ItemList", negocio.toListWithProcedure());
 
             }
-            Response.Redirect("Default.aspx", false);
+            Response.Redirect("Default.aspx");
         }
 
         protected void txtUrlImage_TextChanged(object sender, EventArgs e)

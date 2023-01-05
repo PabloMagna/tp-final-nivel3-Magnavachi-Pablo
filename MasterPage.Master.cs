@@ -12,13 +12,21 @@ namespace FinalProyect_MaxiPrograma_LVL3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!(Page is Login||Page is Error || Page is Register))
+            if (!(Page is Login || Page is Error || Page is Register || Page is MyProfile))
             {
                 if (!Security.isLogged(Session["User"]))
                 {
                     Response.Redirect("Login.aspx");
                 }
                 else
+                {
+                    UserClass user = (UserClass)Session["User"];
+                    imgProfile.ImageUrl = "~/Images/" + user.UrlImagen;
+                }
+            }
+            else
+            {
+                if (Security.isLogged(Session["User"]))
                 {
                     UserClass user = (UserClass)Session["User"];
                     imgProfile.ImageUrl = "~/Images/" + user.UrlImagen;
@@ -31,6 +39,11 @@ namespace FinalProyect_MaxiPrograma_LVL3
         {
             Session["User"] = null;
             Response.Redirect("Login.aspx");
+        }
+
+        protected void imgProfile_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("MyProfile.aspx");
         }
     }
 }

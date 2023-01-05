@@ -26,7 +26,7 @@
                         <div class="navbar-nav">
                             <a class="nav-link active" aria-current="page" href="Default.aspx">Home</a>
                             <a class="nav-link" href="Login.aspx">Login</a>
-                            <a class="nav-link" href="#">Pricing</a>
+                            <a class="nav-link" href="MyProfile.aspx">My Profile</a>
                             <a class="nav-link disabled">Disabled</a>
                         </div>
                     </div>
@@ -40,9 +40,7 @@
                         else
                         { %>
                     <asp:Button ID="btnLogout" CssClass="btn btn-outline-primary me-2" Text="Logout" runat="server" OnClick="btnLogout_Click"/>
-                    <asp:Image ID="imgProfile" runat="server" style="height:45px; width:45px;border-radius:50%" 
-                        ImageUrl="https://scontent.fros2-2.fna.fbcdn.net/v/t39.30808-6/299496979_392694929674442_7788072794608832704_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=HxCpmzc8XCcAX86wokR&_nc_ht=scontent.fros2-2.fna&oh=00_AfB6fXHgSoBO0_FX4AhJHiIFDVM9FU7dZpaV882Uyuhm3A&oe=63B794BB"
-                        />
+                    <asp:ImageButton OnClick="imgProfile_Click" ID="imgProfile" runat="server" style="height:45px; width:45px;border-radius:50%" />
                     <% }%>
                 </div>
             </nav>
