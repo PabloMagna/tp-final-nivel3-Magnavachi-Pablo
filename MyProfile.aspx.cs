@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Web;
@@ -50,6 +51,10 @@ namespace FinalProyect_MaxiPrograma_LVL3
             if (inpImage.PostedFile.FileName != "")
             {
                 string imagePath = Server.MapPath("./Images/");
+                if(File.Exists(imagePath + "profile-" + user.Id + ".jpg"))
+                {
+                    File.Delete(imagePath + "profile-" + user.Id + ".jpg");
+                }
                 inpImage.PostedFile.SaveAs(imagePath + "profile-" + user.Id + ".jpg");
                 user.UrlImagen = "profile-" + user.Id + ".jpg";
             }

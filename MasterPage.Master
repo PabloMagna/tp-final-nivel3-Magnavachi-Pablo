@@ -26,7 +26,10 @@
                         <div class="navbar-nav">
                             <a class="nav-link active" aria-current="page" href="Default.aspx">Home</a>
                             <a class="nav-link" href="Login.aspx">Login</a>
+                            <%if (Session["User"] != null)
+                                { %>
                             <a class="nav-link" href="MyProfile.aspx">My Profile</a>
+                            <%} %>
                             <a class="nav-link disabled">Disabled</a>
                         </div>
                     </div>
@@ -39,8 +42,11 @@
                     <% }
                         else
                         { %>
-                    <asp:Button ID="btnLogout" CssClass="btn btn-outline-primary me-2" Text="Logout" runat="server" OnClick="btnLogout_Click"/>
-                    <asp:ImageButton OnClick="imgProfile_Click" ID="imgProfile" runat="server" style="height:45px; width:45px;border-radius:50%" />
+                    <asp:Button ID="btnLogout" CssClass="btn btn-outline-primary me-2" Text="Logout" runat="server" OnClick="btnLogout_Click" />
+                    <div class="text-center">
+                        <asp:ImageButton OnClick="imgProfile_Click" ID="imgProfile" runat="server" Style="height: 45px; width: 45px; border-radius: 50%" />
+                        <asp:Label ID="lblUnderImage" runat="server"/>
+                    </div>
                     <% }%>
                 </div>
             </nav>

@@ -5,9 +5,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Compilation;
 using System.Web.Configuration;
+using System.Web.DynamicData;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using dominio;
+using FinalProyect_MaxiPrograma_LVL3.dominio;
 using negocio;
 
 namespace FinalProyect_MaxiPrograma_LVL3
@@ -25,6 +27,15 @@ namespace FinalProyect_MaxiPrograma_LVL3
             List<Items>temporal =  negocio.toListWithProcedure();
             dgvList.DataSource = temporal;
             dgvList.DataBind();
+            if(Session["User"]== null)
+            {
+                dgvList.Columns[8].Visible = false;
+            }
+            else if(((UserClass)Session["User"]).TypeUser != typeUser.Admin)
+            {
+                dgvList.Columns[8].Visible = false ;
+            }
+          
         }
 
         protected void btnAdd_Click(object sender, EventArgs e)
