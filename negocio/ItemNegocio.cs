@@ -162,34 +162,49 @@ namespace negocio
             DataAccess data = new DataAccess();
             try
             {
-                string querry = "select a.id, Codigo, Nombre, a.Descripcion description, ImagenUrl, Precio, m.Descripcion Marca, c.Descripcion Categoria, m.Id marcaid, c.Id categoriaid from ARTICULOS a, MARCAS m, CATEGORIAS c where IdMarca=m.Id and IdCategoria=c.Id and ";
-                if (field == "Item Code")
+                string querry = "select a.id, Codigo, Nombre, a.Descripcion description, ImagenUrl, Precio, m.Descripcion Marca, c.Descripcion Categoria, m.Id marcaid, c.Id categoriaid from ARTICULOS a, MARCAS m, CATEGORIAS c where IdMarca=m.Id and IdCategoria=c.Id";
+                if (field == "Code")
                 {
                     switch (standar)
                     {
-                        case "Start with:":
-                            querry += "Codigo like '" + filter + "%'";
+                        case "Begins with:":
+                            querry += " and Codigo like '" + filter + "%'";
                             break;
                         case "Ends with:":
-                            querry += "Codigo like '%" + filter + "'";
+                            querry += " and Codigo like '%" + filter + "'";
                             break;
-                        case "contains:":
-                            querry += "Codigo like '%" + filter + "%'";
+                        case "Contains:":
+                            querry += " and Codigo like '%" + filter + "%'";
                             break;
                     }
                 }
-                else if (field == "Item")
+                else if (field == "Name")
                 {
                     switch (standar)
                     {
-                        case "Start with:":
-                            querry += "nombre like '" + filter + "%'";
+                        case "Begins with:":
+                            querry += " and nombre like '" + filter + "%'";
                             break;
                         case "Ends with:":
-                            querry += "nombre like '%" + filter + "'";
+                            querry += " and nombre like '%" + filter + "'";
                             break;
-                        case "contains:":
-                            querry += "nombre like '%" + filter + "%'";
+                        case "Contains:":
+                            querry += " and nombre like '%" + filter + "%'";
+                            break;
+                    }
+                }
+                else if (field == "Descripcion")
+                {
+                    switch (standar)
+                    {
+                        case "Begins with:":
+                            querry += " and Description like '" + filter + "%'";
+                            break;
+                        case "Ends with:":
+                            querry += " and Description like '%" + filter + "'";
+                            break;
+                        case "Contains:":
+                            querry += " and Description like '%" + filter + "%'";
                             break;
                     }
                 }
@@ -198,13 +213,13 @@ namespace negocio
                     switch (standar)
                     {
                         case "Greater than:":
-                            querry += "precio >" + filter;
+                            querry += " and precio >" + filter;
                             break;
                         case "Lower than:":
-                            querry += "precio <" + filter;
+                            querry += " and precio <" + filter;
                             break;
                         case "Equal to:":
-                            querry += "precio =" + filter;
+                            querry += " and precio =" + filter;
                             break;
                     }
                 }

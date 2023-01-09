@@ -56,14 +56,17 @@ namespace FinalProyect_MaxiPrograma_LVL3
                     File.Delete(imagePath + "profile-" + user.Id + ".jpg");
                 }
                 inpImage.PostedFile.SaveAs(imagePath + "profile-" + user.Id + ".jpg");
-                user.UrlImagen = "profile-" + user.Id + ".jpg";
+                url = "profile-" + user.Id + ".jpg";
             }
             UserClass aux = new UserClass(user.Email, pass, false);
             aux.UserName = user.UserName;
+            aux.TypeUser = user.TypeUser;
             aux.UrlImagen = url;
             aux.Id = user.Id;
             negocio.modify(aux);
             Response.Redirect("Default.aspx",false);
+            Session["User"] = null;
+            Session.Add("User", aux);
         }
     }
 }
