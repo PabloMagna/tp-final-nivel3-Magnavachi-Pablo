@@ -77,6 +77,7 @@
     <Content Include="Error.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Images\noImage.jpg" />
+    <Content Include="ItemPage.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="MyProfile.aspx" />
     <Content Include="negocio\bin\Debug\dominio.dll" />
@@ -86,7 +87,9 @@
     <Content Include="negocio\obj\Debug\negocio.csproj.FileListAbsolute.txt" />
     <Content Include="negocio\obj\Debug\negocio.dll" />
     <Content Include="negocio\obj\Debug\negocio.pdb" />
+    <Content Include="ProyectoScript.js" />
     <Content Include="Register.aspx" />
+    <Content Include="ShoppKartForm.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -111,6 +114,7 @@
       <DependentUpon>addItem.aspx</DependentUpon>
     </Compile>
     <Compile Include="dominio\UserClass.cs" />
+    <Compile Include="dominio\UserFavorites.cs" />
     <Compile Include="Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -120,6 +124,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPage.aspx.cs">
+      <DependentUpon>ItemPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ItemPage.aspx.designer.cs">
+      <DependentUpon>ItemPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -158,6 +169,14 @@
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="Security.cs" />
+    <Compile Include="ShoppKartForm.aspx.cs">
+      <DependentUpon>ShoppKartForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ShoppKartForm.aspx.designer.cs">
+      <DependentUpon>ShoppKartForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="negocio\UserFavoritesNegocio.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="dominio\dominio.csproj" />

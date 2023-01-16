@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="FinalProyect_MaxiPrograma_LVL3.Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" />
@@ -43,7 +44,7 @@
                 <asp:GridView CssClass="table table-striped table-dark" ID="dgvList" runat="server"
                     AllowPaging="true" PageSize="3" OnPageIndexChanging="dgvList_PageIndexChanging"
                     OnSelectedIndexChanged="dgvList_SelectedIndexChanged" DataKeyNames="Id"
-                    AutoGenerateColumns="false" OnRowCommand="dgvList_RowCommand">
+                    AutoGenerateColumns="false">
                     <Columns>
                         <asp:BoundField DataField="Id" Visible="false" HeaderText="Id" />
                         <asp:BoundField DataField="ItemCode" HeaderText="Code" />
@@ -54,7 +55,6 @@
                         <asp:BoundField DataField="TradeDesciption" HeaderText="Trademark" />
                         <asp:BoundField DataField="CategoryDescription" HeaderText="Category" />
                         <asp:CommandField HeaderText="Modify" ShowSelectButton="true" SelectText="✏️" />
-                       <asp:ButtonField HeaderText="Add Item" ButtonType="Button" Text="🛒" CommandName="ShoppingKart" />
 
                     </Columns>
                 </asp:GridView>
@@ -62,6 +62,7 @@
                     { %>
                 <asp:Button ID="btnAdd" CssClass="btn btn-lg btn-primary" runat="server" Text="Add" OnClick="btnAdd_Click" />
                 <%} %>
+               <%-- <asp:Button ID="confirmChanges" CssClass="btn btn-lg btn-primary" runat="server" Text="Confirm Changes" OnClick="confirmChanges_Click"/>--%>
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>

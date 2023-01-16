@@ -95,6 +95,6 @@ namespace negocio
             command.CommandType = System.Data.CommandType.StoredProcedure;
             command.CommandText = sp;
         }
-       
+
     }
 }

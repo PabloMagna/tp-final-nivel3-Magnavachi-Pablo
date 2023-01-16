@@ -20,6 +20,16 @@ namespace FinalProyect_MaxiPrograma_LVL3
             UserClass user = (UserClass)Session["user"];
             txtName.Text = user.UserName;
         }
+        protected void uploadImage()
+        {
+            if (fupImage.HasFile)
+            {
+                // Obtener la ruta de la imagen
+                string filePath = fupImage.FileName;
+                // Establecer la ruta de la imagen en el control Image
+                imgNewProfile.ImageUrl = "~/Images/" + filePath;
+            }
+        }
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
@@ -48,16 +58,16 @@ namespace FinalProyect_MaxiPrograma_LVL3
                 Response.Redirect("Error.aspx");
             }
             string url = user.UrlImagen;
-            if (inpImage.PostedFile.FileName != "")
-            {
-                string imagePath = Server.MapPath("./Images/");
-                if(File.Exists(imagePath + "profile-" + user.Id + ".jpg"))
-                {
-                    File.Delete(imagePath + "profile-" + user.Id + ".jpg");
-                }
-                inpImage.PostedFile.SaveAs(imagePath + "profile-" + user.Id + ".jpg");
-                url = "profile-" + user.Id + ".jpg";
-            }
+            //if (inpImage.PostedFile.FileName != "")
+            //{
+            //    string imagePath = Server.MapPath("./Images/");
+            //    if(File.Exists(imagePath + "profile-" + user.Id + ".jpg"))
+            //    {
+            //        File.Delete(imagePath + "profile-" + user.Id + ".jpg");
+            //    }
+            //    inpImage.PostedFile.SaveAs(imagePath + "profile-" + user.Id + ".jpg");
+            //    url = "profile-" + user.Id + ".jpg";
+            //}
             UserClass aux = new UserClass(user.Email, pass, false);
             aux.UserName = user.UserName;
             aux.TypeUser = user.TypeUser;

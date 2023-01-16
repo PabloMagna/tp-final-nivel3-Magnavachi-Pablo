@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using dominio;
+using FinalProyect_MaxiPrograma_LVL3.dominio;
+using FinalProyect_MaxiPrograma_LVL3.negocio;
 
 namespace negocio
 {
@@ -48,15 +50,15 @@ namespace negocio
                 data.closeConnection();
             }
         }
-            public List<Items> listar()
+        public List<Items> listar()
         {
             List<Items> itemList = new List<Items>();
 
-            DataAccess data = new  DataAccess();
+            DataAccess data = new DataAccess();
             data.settingQuery("select a.Id id, Codigo, Nombre, a.Descripcion description, ImagenUrl, Precio, m.Descripcion Marca, c.Descripcion Categoria, m.Id marcaid, c.Id categoriaid from ARTICULOS a, MARCAS m, CATEGORIAS c where IdMarca=m.Id and IdCategoria=c.Id");
             data.executeQuery();
 
-            while(data.Reader.Read())
+            while (data.Reader.Read())
             {
                 Items aux = new Items();
 
@@ -86,13 +88,13 @@ namespace negocio
 
             {
                 data.settingQuery("insert into ARTICULOS (Codigo,Nombre,Descripcion,IdMarca,IdCategoria,ImagenUrl,Precio) values (@code,@name,@desc,@idm,@idc,@url,@price)");
-                data.settingParametter("@code",item.ItemCode);
-                data.settingParametter("@name",item.Name);
-                data.settingParametter("@desc",item.Description);
-                data.settingParametter("@idm",item.TradeDesciption.TradeId);
-                data.settingParametter("@idc",item.CategoryDescription.CategoryId);
-                data.settingParametter("@url",item.UrlImage);
-                data.settingParametter("@price",item.Price);
+                data.settingParametter("@code", item.ItemCode);
+                data.settingParametter("@name", item.Name);
+                data.settingParametter("@desc", item.Description);
+                data.settingParametter("@idm", item.TradeDesciption.TradeId);
+                data.settingParametter("@idc", item.CategoryDescription.CategoryId);
+                data.settingParametter("@url", item.UrlImage);
+                data.settingParametter("@price", item.Price);
                 data.executeAction();
 
 
@@ -108,7 +110,7 @@ namespace negocio
             {
                 data.closeConnection();
             }
-            
+
         }
         public void modify(Items item, int id)
         {
@@ -116,13 +118,13 @@ namespace negocio
             try
             {
                 data.settingQuery("update articulos set codigo = @code,Nombre =@name,descripcion=@desc,idmarca =@idtrade,idcategoria=@idcategory,imagenurl=@url,precio=@price where Id=@id");
-                data.settingParametter("@code",item.ItemCode);
-                data.settingParametter("@name",item.Name);
-                data.settingParametter("@desc",item.Description);
-                data.settingParametter("@idtrade",item.TradeDesciption.TradeId);
-                data.settingParametter("@idcategory",item.CategoryDescription.CategoryId);
-                data.settingParametter("@url",item.UrlImage);
-                data.settingParametter("@price",item.Price);
+                data.settingParametter("@code", item.ItemCode);
+                data.settingParametter("@name", item.Name);
+                data.settingParametter("@desc", item.Description);
+                data.settingParametter("@idtrade", item.TradeDesciption.TradeId);
+                data.settingParametter("@idcategory", item.CategoryDescription.CategoryId);
+                data.settingParametter("@url", item.UrlImage);
+                data.settingParametter("@price", item.Price);
                 data.settingParametter("@id", id);
                 data.executeAction();
             }
@@ -143,7 +145,7 @@ namespace negocio
             try
             {
                 data.settingQuery("delete from articulos where id=@id");
-                data.settingParametter("@id",item.Id);
+                data.settingParametter("@id", item.Id);
                 data.executeAction();
             }
             catch (Exception)
@@ -244,7 +246,7 @@ namespace negocio
                     aux.TradeDesciption.TradeDescription = (string)data.Reader["Marca"];
 
                     listItem.Add(aux);
-                    
+
 
                 }
                 return listItem;
@@ -259,8 +261,42 @@ namespace negocio
                 data.closeConnection();
             }
 
+        }
+        public Items getItem(int id)
+        {
+            DataAccess data = new DataAccess();
+            try
+            {
+                data.settingQuery("select a.id, Codigo, Nombre, a.Descripcion description, ImagenUrl, Precio, m.Descripcion Marca, c.Descripcion Categoria, m.Id marcaid, c.Id categoriaid from ARTICULOS a, MARCAS m, CATEGORIAS c where IdMarca=m.Id and IdCategoria=c.Id and a.id=@id");
+                data.settingParametter("@id", id);
+                data.executeQuery();
+                Items aux = new Items();
+                while (data.Reader.Read())
+                {
+                    aux.Id = (int)data.Reader["Id"];
+                    aux.ItemCode = (string)data.Reader["Codigo"];
+                    aux.Name = (string)data.Reader["Nombre"];
+                    aux.Description = (string)data.Reader["description"];
+                    aux.UrlImage = (string)data.Reader["ImagenUrl"];
+                    aux.Price = (decimal)data.Reader["Precio"];
+                    aux.CategoryDescription = new Category();
+                    aux.CategoryDescription.CategoryId = (int)data.Reader["categoriaid"];
+                    aux.TradeDesciption = new Trademarks();
+                    aux.TradeDesciption.TradeId = (int)data.Reader["marcaid"];
 
-            
+                }
+                return aux;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                data.closeConnection();
+            }
         }
     }
 }

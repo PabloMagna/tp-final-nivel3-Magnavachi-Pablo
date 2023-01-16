@@ -1,5 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.Master.cs" Inherits="FinalProyect_MaxiPrograma_LVL3.Site1" %>
-
+<%@ Register assembly="System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" namespace="System.Web.UI" tagprefix="asp" %>
 <!DOCTYPE html>
 
 <html>
@@ -28,6 +28,7 @@
                             <a class="nav-link" href="Login.aspx">Login</a>
                             <%if (Session["User"] != null)
                                 { %>
+                            <a class="nav-link" href="ShoppKartForm.aspx">My Kart</a>
                             <a class="nav-link" href="MyProfile.aspx">My Profile</a>
                             <%} %>
                             <a class="nav-link disabled">Disabled</a>
@@ -54,5 +55,6 @@
             </asp:ContentPlaceHolder>
         </div>
     </form>
+   
 </body>
 </html>
