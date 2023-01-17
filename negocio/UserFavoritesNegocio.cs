@@ -6,6 +6,8 @@ using System.Web;
 using System.Data;
 using dominio;
 using System.Data.SqlClient;
+using FinalProyect_MaxiPrograma_LVL3.dominio;
+using System.Web.WebSockets;
 
 namespace FinalProyect_MaxiPrograma_LVL3
 {
@@ -45,7 +47,22 @@ namespace FinalProyect_MaxiPrograma_LVL3
                 return false;
             }
         }
+        public List<int> toListFromIdUser(int idUser)
+        {
+            DataAccess data = new DataAccess();
+            List<int> lista = new List<int>();
+            data.settingQuery("Select idItem from UserFavorites where IdUser = @idUser");
+            data.settingParametter("@idUser", idUser);
+            data.executeQuery();
 
+            while (data.Reader.Read())
+            {
+                int aux = (int)data.Reader["idItem"];
+            }
+
+            data.closeConnection();
+            return lista;
+        }
 
     }
 }

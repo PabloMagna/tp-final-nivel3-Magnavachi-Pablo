@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using dominio;
 using FinalProyect_MaxiPrograma_LVL3.dominio;
 using FinalProyect_MaxiPrograma_LVL3.negocio;
+using FinalProyect_MaxiPrograma_LVL3;
 
 namespace negocio
 {
@@ -262,41 +263,40 @@ namespace negocio
             }
 
         }
-        public Items getItem(int id)
+        public List<Items> getItems(int userId)
         {
+            UserFavoritesNegocio favNegocio = new UserFavoritesNegocio();
+
+            List<Items> items = new List<Items>();
             DataAccess data = new DataAccess();
-            try
+            string querry = "select a.Id idItem, Codigo, Nombre, a.Descripcion description, ImagenUrl, Precio, m.Descripcion TradeDescription, c.Descripcion CategoryDescription, m.Id marcaid, c.Id categoriaid from ARTICULOS a, MARCAS m, CATEGORIAS c JOIN UserFavorites f ON idItem = f.idItem WHERE f.idUser= @userId AND a.Id = f.idItem and IdMarca=m.Id and IdCategoria=c.Id";
+            data.settingQuery(querry);
+            data.settingParametter("@userId", userId);
+            data.executeQuery();
+            while (data.Reader.Read())
             {
-                data.settingQuery("select a.id, Codigo, Nombre, a.Descripcion description, ImagenUrl, Precio, m.Descripcion Marca, c.Descripcion Categoria, m.Id marcaid, c.Id categoriaid from ARTICULOS a, MARCAS m, CATEGORIAS c where IdMarca=m.Id and IdCategoria=c.Id and a.id=@id");
-                data.settingParametter("@id", id);
-                data.executeQuery();
                 Items aux = new Items();
-                while (data.Reader.Read())
-                {
-                    aux.Id = (int)data.Reader["Id"];
-                    aux.ItemCode = (string)data.Reader["Codigo"];
-                    aux.Name = (string)data.Reader["Nombre"];
-                    aux.Description = (string)data.Reader["description"];
-                    aux.UrlImage = (string)data.Reader["ImagenUrl"];
-                    aux.Price = (decimal)data.Reader["Precio"];
-                    aux.CategoryDescription = new Category();
-                    aux.CategoryDescription.CategoryId = (int)data.Reader["categoriaid"];
-                    aux.TradeDesciption = new Trademarks();
-                    aux.TradeDesciption.TradeId = (int)data.Reader["marcaid"];
-
-                }
-                return aux;
-
+                aux.Id = (int)data.Reader["idItem"];
+                aux.ItemCode = (string)data.Reader["Codigo"];
+                aux.Name = (string)data.Reader["Nombre"];
+                aux.Description = (string)data.Reader["description"];
+                aux.UrlImage = (string)data.Reader["imagenUrl"];
+                aux.Price = (decimal)data.Reader["precio"];
+                aux.CategoryDescription = new Category();
+                aux.CategoryDescription.CategoryId = (int)data.Reader["Categoriaid"];
+                aux.CategoryDescription.CategoryDescription = (string)data.Reader["CategoryDescription"];
+                aux.TradeDesciption = new Trademarks();
+                aux.TradeDesciption.TradeId = (int)data.Reader["marcaid"];
+                aux.TradeDesciption.TradeDescription = (string)data.Reader["TradeDescription"];
+                items.Add(aux);
             }
-            catch (Exception)
+            data.closeConnection();
+            if (items.Count > 0)
             {
-
-                throw;
+                return items;
             }
-            finally
-            {
-                data.closeConnection();
-            }
+            return null;
         }
     }
+
 }

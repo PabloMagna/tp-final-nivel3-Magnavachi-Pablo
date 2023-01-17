@@ -79,6 +79,7 @@
     <Content Include="Images\noImage.jpg" />
     <Content Include="ItemPage.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="MyFavourites.aspx" />
     <Content Include="MyProfile.aspx" />
     <Content Include="negocio\bin\Debug\dominio.dll" />
     <Content Include="negocio\bin\Debug\dominio.pdb" />
@@ -138,6 +139,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MyFavourites.aspx.cs">
+      <DependentUpon>MyFavourites.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyFavourites.aspx.designer.cs">
+      <DependentUpon>MyFavourites.aspx</DependentUpon>
     </Compile>
     <Compile Include="MyProfile.aspx.cs">
       <DependentUpon>MyProfile.aspx</DependentUpon>

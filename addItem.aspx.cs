@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using dominio;
 using System.Data;
+using FinalProyect_MaxiPrograma_LVL3.dominio;
 
 namespace FinalProyect_MaxiPrograma_LVL3
 {
@@ -18,6 +19,19 @@ namespace FinalProyect_MaxiPrograma_LVL3
             CategoryNegocio category = new CategoryNegocio();
             if (!IsPostBack)
             {
+                UserFavoritesNegocio negocio = new UserFavoritesNegocio();
+                if ((Request.QueryString["Id"])!=null && negocio.exists(((UserClass)Session["User"]).Id, int.Parse(Request.QueryString["Id"])))
+                {
+                    cbxAddFavorites.Checked = true;
+                }
+                else
+                {
+                    cbxAddFavorites.Checked = false;
+                }
+                if ((Request.QueryString["Id"]) == null)
+                {
+                    cbxAddFavorites.Visible = false;
+                }
                 ddlTradeDescription.DataSource = trade.listar();
                 ddlTradeDescription.DataTextField = "TradeDescription";
                 ddlTradeDescription.DataValueField = "TradeId";
@@ -84,6 +98,18 @@ namespace FinalProyect_MaxiPrograma_LVL3
 
             }
             Response.Redirect("Default.aspx");
+        }
+        protected void cbxAddFavorites_CheckedChanged(object sender, EventArgs e)
+        {
+            UserFavoritesNegocio negocio = new UserFavoritesNegocio();
+            if (cbxAddFavorites.Checked)
+            {
+                negocio.add(((UserClass)Session["User"]).Id, int.Parse(Request.QueryString["Id"]));
+            }
+            else
+            {
+                negocio.delete(((UserClass)Session["User"]).Id, int.Parse(Request.QueryString["Id"]));
+            }
         }
 
         protected void txtUrlImage_TextChanged(object sender, EventArgs e)

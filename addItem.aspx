@@ -51,7 +51,10 @@
 
             </div>
         </div>
-         <div class="col-6">
+        <div class="card-body">
+            <asp:CheckBox AutoPostBack="true" Text="Add Favorites" ID="cbxAddFavorites" OnCheckedChanged="cbxAddFavorites_CheckedChanged" runat="server" />
+        </div>
+        <div class="col-6">
             <image src="<% = txtUrlImage.Text%>" />
         </div>
     </div>
