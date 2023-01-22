@@ -76,6 +76,10 @@
     <Content Include="addItem.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Images\default.png" />
+    <Content Include="Images\github.png" />
+    <Content Include="Images\instagram.png" />
+    <Content Include="Images\Linkedin.png" />
     <Content Include="Images\noImage.jpg" />
     <Content Include="ItemPage.aspx" />
     <Content Include="Login.aspx" />

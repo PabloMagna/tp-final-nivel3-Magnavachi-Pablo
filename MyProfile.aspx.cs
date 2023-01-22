@@ -31,6 +31,29 @@ namespace FinalProyect_MaxiPrograma_LVL3
             }
         }
 
+
+        protected void fupImage_Load(object sender, EventArgs e)
+        {
+            UserClass user = (UserClass)Session["user"];
+            if (fupImage.HasFile)
+            {
+                string imagePath = Server.MapPath("~/Images/");
+                string fileName = "profile-" + user.Id + Path.GetExtension(fupImage.FileName);
+                if (File.Exists(imagePath + fileName))
+                {
+                    File.Delete(imagePath + fileName);
+                }
+                fupImage.SaveAs(imagePath + fileName);
+                user.UrlImagen = fileName;
+                imgNewProfile.ImageUrl = "~/Images/" + fileName;
+                Session["user"] = user; // Actualizar información del usuario en la sesión
+            }
+            else
+            {
+                imgNewProfile.ImageUrl = "~/Images/" + user.UrlImagen;
+            }
+        }
+
         protected void btnSave_Click(object sender, EventArgs e)
         {
             UserNegocio negocio = new UserNegocio();
@@ -40,7 +63,8 @@ namespace FinalProyect_MaxiPrograma_LVL3
             if (pass == "")
             {
                 pass = user.Password;
-            }else if(pass == user.Password)
+            }
+            else if (pass == user.Password)
             {
                 if (txtPassword.Text == txtConfirmPassword.Text)
                 {
@@ -58,23 +82,24 @@ namespace FinalProyect_MaxiPrograma_LVL3
                 Response.Redirect("Error.aspx");
             }
             string url = user.UrlImagen;
-            //if (inpImage.PostedFile.FileName != "")
-            //{
-            //    string imagePath = Server.MapPath("./Images/");
-            //    if(File.Exists(imagePath + "profile-" + user.Id + ".jpg"))
-            //    {
-            //        File.Delete(imagePath + "profile-" + user.Id + ".jpg");
-            //    }
-            //    inpImage.PostedFile.SaveAs(imagePath + "profile-" + user.Id + ".jpg");
-            //    url = "profile-" + user.Id + ".jpg";
-            //}
+            if (fupImage.HasFile)
+            {
+                string imagePath = Server.MapPath("~/Images/");
+                string fileName = "profile-" + user.Id + Path.GetExtension(fupImage.FileName);
+                if (File.Exists(imagePath + fileName))
+                {
+                    File.Delete(imagePath + fileName);
+                }
+                fupImage.SaveAs(imagePath + fileName);
+                url = fileName;
+            }
             UserClass aux = new UserClass(user.Email, pass, false);
             aux.UserName = user.UserName;
             aux.TypeUser = user.TypeUser;
             aux.UrlImagen = url;
             aux.Id = user.Id;
             negocio.modify(aux);
-            Response.Redirect("Default.aspx",false);
+            Response.Redirect("Default.aspx", false);
             Session["User"] = null;
             Session.Add("User", aux);
         }

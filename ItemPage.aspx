@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="card text-center">
-  <img class="card-img-top" src="<%= item.UrlImage %>" alt="<%= item.Name %>">
+ <img class="card-img-top" src="<%= item.UrlImage %>" onerror="this.src='Images/default.png'" alt="<%= item.Name %>" style="max-width:200px; max-height:200px; margin:0 auto; display:block;">
   <div class="card-body">
     <h5 class="card-title"><%= item.Name %></h5>
     <p class="card-text"><%= item.Description %></p>

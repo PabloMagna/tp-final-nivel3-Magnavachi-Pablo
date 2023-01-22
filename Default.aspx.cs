@@ -115,7 +115,7 @@ namespace FinalProyect_MaxiPrograma_LVL3
             if (ddlField.SelectedItem.ToString() == "Price")
             {
                 ddlCriterion.Items.Clear();
-                ddlCriterion.Items.Add("Iqual to:");
+                ddlCriterion.Items.Add("Equal to:");
                 ddlCriterion.Items.Add("Greater than:");
                 ddlCriterion.Items.Add("Less than:");
             }
