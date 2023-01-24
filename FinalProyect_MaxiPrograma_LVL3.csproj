@@ -109,7 +109,6 @@
     <Compile Include="dominio\Items.cs" />
     <Compile Include="dominio\obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
     <Compile Include="dominio\Properties\AssemblyInfo.cs" />
-    <Compile Include="dominio\ShoppKart.cs" />
     <Compile Include="dominio\Trademarks.cs" />
     <Compile Include="addItem.aspx.cs">
       <DependentUpon>addItem.aspx</DependentUpon>
@@ -163,7 +162,6 @@
     <Compile Include="negocio\ItemNegocio.cs" />
     <Compile Include="negocio\obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
     <Compile Include="negocio\Properties\AssemblyInfo.cs" />
-    <Compile Include="negocio\ShoppKartNegocio.cs" />
     <Compile Include="negocio\TrademarkNegocio.cs" />
     <Compile Include="MasterPage.Master.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>

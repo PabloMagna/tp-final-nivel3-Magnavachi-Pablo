@@ -16,7 +16,7 @@ namespace FinalProyect_MaxiPrograma_LVL3
        public void add(int userId, int itemId)
         {
             DataAccess data = new DataAccess();
-            data.settingQuery("insert into UserFavorites (IdUser, IdItem) values (@IdUser, @IdItem)");
+            data.settingQuery("insert into FAVORITOS (IdArticulo, IdUser) values (@idItem,@idUser)");
             data.settingParametter("@IdUser", userId);
             data.settingParametter("@IdItem", itemId);
             data.executeAction();
@@ -24,7 +24,7 @@ namespace FinalProyect_MaxiPrograma_LVL3
         public void delete(int userId, int itemId)
         {
             DataAccess data = new DataAccess();
-            data.settingQuery("delete from UserFavorites where IdUser = @IdUser and IdItem = @IdItem");
+            data.settingQuery("delete from FAVORITOS where IdArticulo = @IdItem and IdUser = @IdUser");
             data.settingParametter("@IdUser", userId);
             data.settingParametter("@IdItem", itemId);
             data.executeAction();
@@ -32,7 +32,7 @@ namespace FinalProyect_MaxiPrograma_LVL3
         public bool exists(int userId, int itemId)
         {
             DataAccess data = new DataAccess();
-            data.settingQuery("select * from UserFavorites where IdUser = @IdUser and IdItem = @IdItem");
+            data.settingQuery("select * from FAVORITOS where IdUser = @IdUser and IdArticulo = @IdItem");
             data.settingParametter("@IdUser", userId);
             data.settingParametter("@IdItem", itemId);
             data.executeQuery();
@@ -51,13 +51,13 @@ namespace FinalProyect_MaxiPrograma_LVL3
         {
             DataAccess data = new DataAccess();
             List<int> lista = new List<int>();
-            data.settingQuery("Select idItem from UserFavorites where IdUser = @idUser");
+            data.settingQuery("Select IdArticulo from FAVORITOS where IdUser = @idUser");
             data.settingParametter("@idUser", idUser);
             data.executeQuery();
 
             while (data.Reader.Read())
             {
-                int aux = (int)data.Reader["idItem"];
+                int aux = (int)data.Reader["idArticulo"];
             }
 
             data.closeConnection();

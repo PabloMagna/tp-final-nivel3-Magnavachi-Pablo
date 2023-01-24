@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Web;
 using dominio;
@@ -15,7 +16,7 @@ namespace FinalProyect_MaxiPrograma_LVL3.negocio
             DataAccess data = new DataAccess();
             try
             {
-                data.settingQuery("select id,UserType,UserName,UrlImage from Usuarios where @Email= Email and @pass = Pass and active = 1");
+                data.settingQuery("select id, nombre,  apellido, urlImagenPerfil, admin  from USERS where @email=email and @pass = pass");
                 data.settingParametter("@Email", user.Email);
                 data.settingParametter("@pass", user.Password);
 
@@ -23,9 +24,20 @@ namespace FinalProyect_MaxiPrograma_LVL3.negocio
                 while (data.Reader.Read())
                 {
                     user.Id = (int)data.Reader["id"];
-                    user.TypeUser = (int)data.Reader["UserType"] == 2 ? typeUser.Admin : typeUser.User;
-                    user.UserName = (string)data.Reader["UserName"];
-                    user.UrlImagen = (string)data.Reader["UrlImage"];
+                    user.TypeUser = (bool)data.Reader["admin"] ? typeUser.Admin : typeUser.User;
+                    if (data.Reader["nombre"] is DBNull)
+                        user.UserName = "No Name";
+                    else
+                        user.UserName = (string)data.Reader["nombre"];
+                    if (data.Reader["apellido"] is DBNull)
+                        user.UserSurname = "No Surname";
+                    else
+                        user.UserSurname = (string)data.Reader["apellido"];
+                    if (data.Reader["UrlImagenPerfil"] is DBNull)
+                        user.UrlImagen = "/Images/Default.png";
+                    else
+                        user.UrlImagen = (string)data.Reader["UrlImagenPerfil"];
+
                     return true;
                 }
                 return false;
@@ -45,18 +57,19 @@ namespace FinalProyect_MaxiPrograma_LVL3.negocio
             DataAccess data = new DataAccess();
             try
             {
-                data.settingQuery("insert into Usuarios (Email,Pass,UserType,UrlImage,UserName,active) values (@email,@pass,@type,@img,@user,1)");
+                data.settingQuery("insert into USERS (email,pass,nombre,apellido,urlImagenPerfil,admin) values (@email,@pass,@nombre,@apellido,@url,@admin)");
                 data.settingParametter("@email", user.Email);
                 data.settingParametter("@pass", user.Password);
-                data.settingParametter("@type", user.TypeUser == typeUser.Admin ? 2 : 1);
-                data.settingParametter("@img", user.UrlImagen);
-                data.settingParametter("@user", user.UserName);
+                data.settingParametter("@admin", user.TypeUser == typeUser.Admin ? 1 : 0);
+                data.settingParametter("@url", user.UrlImagen);
+                data.settingParametter("@nombre", user.UserName);
+                data.settingParametter("@apellido", user.UserSurname);
                 data.executeQuery();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }
             finally
             {
@@ -68,19 +81,20 @@ namespace FinalProyect_MaxiPrograma_LVL3.negocio
             DataAccess data = new DataAccess();
             try
             {
-                data.settingQuery("update Usuarios set Email = @email,Pass = @pass,UserType = @type,UrlImage = @img,UserName = @user,active = 1 where id = @id");
+                data.settingQuery("update USERS set email = @email, pass = @pass, admin = @type, urlImagenPerfil=@img, nombre = @nombre, apellido = @apellido where id = @id");
                 data.settingParametter("@id", user.Id);
                 data.settingParametter("@email", user.Email);
                 data.settingParametter("@pass", user.Password);
-                data.settingParametter("@type", user.TypeUser == typeUser.Admin ? 2 : 1);
+                data.settingParametter("@type", user.TypeUser == typeUser.Admin ? 1 : 0);
                 data.settingParametter("@img", user.UrlImagen);
-                data.settingParametter("@user", user.UserName);
+                data.settingParametter("@nombre", user.UserName);
+                data.settingParametter("@apellido", user.UserSurname);
                 data.executeQuery();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }
             finally
             {

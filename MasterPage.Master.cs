@@ -22,7 +22,7 @@ namespace FinalProyect_MaxiPrograma_LVL3
                 {
                     UserClass user = (UserClass)Session["User"];
                     imgProfile.ImageUrl = "~/Images/" + user.UrlImagen;
-                    lblUnderImage.Text = user.UserName;
+                    //lblUnderImage.Text = user.UserName;
                 }
             }
             else

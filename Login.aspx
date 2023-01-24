@@ -74,6 +74,11 @@
         .login-form input[type="submit"]:hover {
             background-color: #5c3fc9;
         }
+        .logued{
+            margin-bottom:10%;
+            margin:3%;
+            color:white;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -95,7 +100,7 @@
         else
         {%>
     <br />
-    <asp:Label ID="lblLogued" runat="server">Ya te encuentras logueado </asp:Label>
+    <asp:Label CssClass="logued" ID="lblLogued" runat="server">Ya te encuentras logueado </asp:Label>
     <%} %>
     </div>
 </asp:Content>

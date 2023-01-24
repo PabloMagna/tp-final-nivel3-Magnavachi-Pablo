@@ -36,6 +36,7 @@ namespace FinalProyect_MaxiPrograma_LVL3
                     user.UrlImagen = "noImage.jpg";
                 }
                 user.UserName = txtName.Text;
+                user.UserSurname = txtPassword.Text;
                 negocio.register(user);
 
                 // Redirect to the login page

@@ -42,7 +42,6 @@
                             <a class="nav-link" href="Login.aspx">Login</a>
                             <%if (Session["User"] != null)
                                 { %>
-                            <a class="nav-link" href="ShoppKartForm.aspx">My Kart</a>
                             <a class="nav-link" href="MyProfile.aspx">My Profile</a>
                             <a class="nav-link" href="MyFavourites.aspx">My Favourites</a>
                             <%} %>
@@ -62,9 +61,8 @@
                         <% }
                             else
                             { %>
-                        <div class="col-12 text-center position-relative">
-                            <asp:Label ID="lblUnderImage" runat="server" class="position-absolute" />
-                            <asp:ImageButton OnClick="imgProfile_Click" ID="imgProfile" runat="server" Style="height: 45px; width: 45px; border-radius: 50%" />
+                        <<div class="col-12 text-center position-relative">
+                            <asp:ImageButton OnClick="imgProfile_Click" ID="imgProfile" runat="server" onerror="this.src='/images/noimage.jpg'" Style="height: 45px; width: 45px; border-radius: 50%" />
                         </div>
                         <div class="col-12 text-center">
                             <asp:Button ID="btnLogout" CssClass="btn btn-outline-primary" Text="Logout" runat="server" OnClick="btnLogout_Click" />

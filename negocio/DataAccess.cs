@@ -21,7 +21,7 @@ namespace negocio
         }
         public DataAccess ()
         {
-            conection = new SqlConnection("server=.\\SQLEXPRESS; database = CATALOGO_DB; integrated security=true");
+            conection = new SqlConnection("server=.\\SQLEXPRESS; database = CATALOGO_WEB_DB; integrated security=true");
             command = new SqlCommand();
         }
         public void settingQuery(string query)

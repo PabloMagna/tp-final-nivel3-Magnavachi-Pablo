@@ -30,7 +30,7 @@
                     <asp:DropDownList ID="ddlField" OnSelectedIndexChanged="ddlField_SelectedIndexChanged" AutoPostBack="true" CssClass="btn btn-secondary btn-sm dropdown-toggle bg-purple-light" runat="server">
                         <asp:ListItem Text="Code" />
                         <asp:ListItem Text="Name" />
-                        <asp:ListItem Text="Descriptión" />
+                        <asp:ListItem Text="Description" />
                         <asp:ListItem Text="Price" />
                     </asp:DropDownList>
                 </div>
