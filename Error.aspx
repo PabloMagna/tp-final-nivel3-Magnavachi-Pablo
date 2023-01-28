@@ -3,7 +3,7 @@
     <style>
         .text-white {
             color: #fff;
-            margin-top:3%;
+            padding:3%;
         }
     </style>
 </asp:Content>

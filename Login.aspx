@@ -100,7 +100,7 @@
         else
         {%>
     <br />
-    <asp:Label CssClass="logued" ID="lblLogued" runat="server">Ya te encuentras logueado </asp:Label>
+    <asp:Label CssClass="logued" ID="lblLogued" runat="server"> You are already logued!! </asp:Label>
     <%} %>
     </div>
 </asp:Content>

@@ -17,11 +17,11 @@
     </div>
     <div class="col-md-3">
         <asp:Label ID="Label3" runat="server" Text="Password" CssClass="text-white"></asp:Label>
-        <asp:TextBox ID="txtPassword" CssClass="form-control" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtPassword" type="password" CssClass="form-control" runat="server"></asp:TextBox>
     </div>
     <div class="col-md-3">
         <asp:Label ID="Label4" runat="server" Text="Confirm Password" CssClass="text-white"></asp:Label>
-        <asp:TextBox ID="txtConfirmPassword" CssClass="form-control" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtConfirmPassword" type="password" CssClass="form-control" runat="server"></asp:TextBox>
     </div>
     <div class="col-md-3">
         <asp:Label ID="Label7" runat="server" Text="Name" CssClass="text-white"></asp:Label>

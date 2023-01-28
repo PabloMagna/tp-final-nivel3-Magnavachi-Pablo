@@ -70,6 +70,8 @@
     <Content Include="Default.aspx" />
     <Content Include="dominio\bin\Debug\dominio.dll" />
     <Content Include="dominio\bin\Debug\dominio.pdb" />
+    <Content Include="Images\corazon lleno.png" />
+    <Content Include="Images\corazon vacio.png" />
     <Content Include="dominio\obj\Debug\dominio.csproj.FileListAbsolute.txt" />
     <Content Include="dominio\obj\Debug\dominio.dll" />
     <Content Include="dominio\obj\Debug\dominio.pdb" />

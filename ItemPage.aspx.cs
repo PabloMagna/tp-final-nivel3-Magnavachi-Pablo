@@ -18,13 +18,21 @@ namespace FinalProyect_MaxiPrograma_LVL3
             if (!IsPostBack)
             {
                 UserFavoritesNegocio negocio = new UserFavoritesNegocio();
+                //if (negocio.exists(((UserClass)Session["User"]).Id, int.Parse(Request.QueryString["Id"])))
+                //{
+                //    cbxAddFavorites.Checked = true;
+                //}
+                //else
+                //{
+                //    cbxAddFavorites.Checked = false;
+                //}
                 if (negocio.exists(((UserClass)Session["User"]).Id, int.Parse(Request.QueryString["Id"])))
                 {
-                    cbxAddFavorites.Checked = true;
+                    ImageButton.ImageUrl = "~/Images/heartFull.png";
                 }
                 else
                 {
-                    cbxAddFavorites.Checked = false;
+                    ImageButton.ImageUrl = "~/Images/heartEmpty.png";
                 }
             }
             if (Request.QueryString["Id"] != null)
@@ -36,15 +44,30 @@ namespace FinalProyect_MaxiPrograma_LVL3
             }
         }
 
-        protected void cbxAddFavorites_CheckedChanged(object sender, EventArgs e)
+        //protected void cbxAddFavorites_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    UserFavoritesNegocio negocio = new UserFavoritesNegocio();
+        //    if (cbxAddFavorites.Checked)
+        //    {
+        //        negocio.add(((UserClass)Session["User"]).Id, int.Parse(Request.QueryString["Id"]));
+        //    }
+        //    else
+        //    {
+        //        negocio.delete(((UserClass)Session["User"]).Id, int.Parse(Request.QueryString["Id"]));
+        //    }
+        //}
+
+        protected void ImageButton_Click(object sender, ImageClickEventArgs e)
         {
             UserFavoritesNegocio negocio = new UserFavoritesNegocio();
-            if (cbxAddFavorites.Checked)
+            if (ImageButton.ImageUrl == "~/Images/heartEmpty.png")
             {
+                ImageButton.ImageUrl = "~/Images/heartFull.png";
                 negocio.add(((UserClass)Session["User"]).Id, int.Parse(Request.QueryString["Id"]));
             }
             else
             {
+                ImageButton.ImageUrl = "~/Images/heartEmpty.png";
                 negocio.delete(((UserClass)Session["User"]).Id, int.Parse(Request.QueryString["Id"]));
             }
         }

@@ -17,8 +17,21 @@ namespace FinalProyect_MaxiPrograma_LVL3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             UserClass user = (UserClass)Session["user"];
-            txtName.Text = user.UserName;
+            if (user.TypeUser == typeUser.Admin)
+            {
+                Session.Add("Error", "You don't have permission to modify this profile. Please Loguin with User(no admin) to access this page.");
+                Response.Redirect("Error.aspx");
+            }
+            if (user.UserName == null)
+                txtName.Text = "";
+            else
+                txtName.Text = user.UserName;
+            if (user.UserSurname == null)
+                txtSurname.Text = "";
+            else
+                txtSurname.Text = user.UserSurname;
         }
         protected void uploadImage()
         {
@@ -59,6 +72,7 @@ namespace FinalProyect_MaxiPrograma_LVL3
             UserNegocio negocio = new UserNegocio();
             UserClass user = (UserClass)Session["user"];
             user.UserName = txtName.Text;
+            user.UserSurname = txtSurname.Text;
             string pass = txtOldPass.Text;
             if (pass == "")
             {
@@ -95,6 +109,7 @@ namespace FinalProyect_MaxiPrograma_LVL3
             }
             UserClass aux = new UserClass(user.Email, pass, false);
             aux.UserName = user.UserName;
+            aux.UserSurname = user.UserSurname;
             aux.TypeUser = user.TypeUser;
             aux.UrlImagen = url;
             aux.Id = user.Id;

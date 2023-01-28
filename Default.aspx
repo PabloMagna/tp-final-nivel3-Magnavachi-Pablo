@@ -10,14 +10,14 @@
             background-color: #5c3fc9 !important;
         }
     </style>
-    <script>
-        function runScript(e) {
-            if (e.keyCode == 13) {
-                document.getElementById("btnSearch").click();
-                return false;
-            }
-        }
-    </script>
+   <script>
+       function runScript(e) {
+           if (e.keyCode == 13) {
+               document.getElementById("btnSearch").click();
+               return false;
+           }
+       }
+   </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" />
@@ -43,7 +43,8 @@
                     <asp:TextBox ID="txtFilter" CssClass="form-control ml-2" runat="server"></asp:TextBox>
                 </div>
                 <div class="col-3 ">
-                    <asp:Button ID="btnSearch" OnClick="btnSearch_Click" CssClass="btn btn-primary"  BackColor="Purple" runat="server" Text="Search" />
+                    <asp:Button ID="btnSearch"  OnClick="btnSearch_Click" CssClass="btn btn-primary"  BackColor="Purple" runat="server" Text="Search" />
+                    <asp:Label id="lblSearchWarning" ForeColor="Red" runat="server" />
                 </div>
             </div>
             <br />
@@ -56,7 +57,7 @@
                     <asp:BoundField DataField="ItemCode" HeaderText="Code" />
                     <asp:BoundField DataField="Name" HeaderText="Name" />
                     <asp:BoundField DataField="Description" HeaderText="Description" />
-                    <asp:BoundField DataField="Price" HeaderText="Price" DataFormatString="{0:F2}" />
+                    <asp:BoundField DataField="Price" HeaderText="Price" DataFormatString="{0:0.00}" />
                     <asp:BoundField DataField="UrlImage" Visible="false" HeaderText="Image" />
                     <asp:BoundField DataField="TradeDesciption" HeaderText="Trademark" />
                     <asp:BoundField DataField="CategoryDescription" HeaderText="Category" />

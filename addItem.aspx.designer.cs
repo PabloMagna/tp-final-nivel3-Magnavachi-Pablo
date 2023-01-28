@@ -33,6 +33,15 @@ namespace FinalProyect_MaxiPrograma_LVL3
         protected global::System.Web.UI.WebControls.TextBox txtCode;
 
         /// <summary>
+        /// Control lblCodeWarning.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCodeWarning;
+
+        /// <summary>
         /// Control txtName.
         /// </summary>
         /// <remarks>
@@ -42,6 +51,15 @@ namespace FinalProyect_MaxiPrograma_LVL3
         protected global::System.Web.UI.WebControls.TextBox txtName;
 
         /// <summary>
+        /// Control lblNameWarning.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNameWarning;
+
+        /// <summary>
         /// Control txtPrice.
         /// </summary>
         /// <remarks>
@@ -49,6 +67,15 @@ namespace FinalProyect_MaxiPrograma_LVL3
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPrice;
+
+        /// <summary>
+        /// Control lblPriceWarning.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPriceWarning;
 
         /// <summary>
         /// Control txtItemDescription.
@@ -67,15 +94,6 @@ namespace FinalProyect_MaxiPrograma_LVL3
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtUrlImage;
-
-        /// <summary>
-        /// Control FileUpload1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
 
         /// <summary>
         /// Control ddlTradeDescription.
@@ -105,12 +123,12 @@ namespace FinalProyect_MaxiPrograma_LVL3
         protected global::System.Web.UI.WebControls.Button btnAdd;
 
         /// <summary>
-        /// Control cbxAddFavorites.
+        /// Control ImageButton.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbxAddFavorites;
+        protected global::System.Web.UI.WebControls.ImageButton ImageButton;
     }
 }

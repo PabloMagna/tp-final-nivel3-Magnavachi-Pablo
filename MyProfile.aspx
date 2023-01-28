@@ -1,55 +1,4 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="MyProfile.aspx.cs" Inherits="FinalProyect_MaxiPrograma_LVL3.MyProfile" %>
-
-<%--<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script>
-        function uploadImage() {
-            var fileUpload = document.getElementById("<%=fupImage.ClientID%>");
-            var imgNewProfile = document.getElementById("<%=imgNewProfile.ClientID%>");
-            if (fileUpload.value != "") {
-                imgNewProfile.src = URL.createObjectURL(fileUpload.files[0]);
-            }
-        }
-    </script>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:ScriptManager runat="server"></asp:ScriptManager>
-    <asp:Label ID="Label1" runat="server" Text="Register"></asp:Label>
-    <br />
-    <br />
-    <div class="row">
-        <div class="col-md-3">
-            <asp:Label ID="Label5" runat="server" Text="Actual Password"></asp:Label>
-            <asp:TextBox ID="txtOldPass" CssClass="form-control" runat="server"></asp:TextBox>
-        </div>
-        <div class="col-md-3">
-            <asp:Label ID="Label3" runat="server" Text="New Password"></asp:Label>
-            <asp:TextBox ID="txtPassword" CssClass="form-control" runat="server"></asp:TextBox>
-        </div>
-        <div class="col-md-3">
-            <asp:Label ID="Label4" runat="server" Text="Confirm New Password"></asp:Label>
-            <asp:TextBox ID="txtConfirmPassword" CssClass="form-control" runat="server"></asp:TextBox>
-        </div>
-        <div class="col-md-3">
-            <asp:Label ID="Label7" runat="server" Text="Name and Surname"></asp:Label>
-            <asp:TextBox ID="txtName" CssClass="form-control" runat="server"></asp:TextBox>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <ContentTemplate>
-                    <asp:FileUpload ID="fupImage" OnLoad="fupImage_Load" runat="server" CssClass="form-control" onchange="this.form.submit();" />
-                    <asp:Image ID="imgNewProfile" runat="server" CssClass="img-fluid m-3" Width="100" Height="100" />
-                </ContentTemplate>
-            </asp:UpdatePanel>
-        </div>
-    </div>
-    <br />
-    <asp:Button CssClass="btn btn-primary" ID="btnSave" runat="server" Text="Save Changes" OnClick="btnSave_Click" />
-    <br />
-
-</asp:Content>--%>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script>
         function uploadImage() {
@@ -136,8 +85,10 @@
                     <asp:TextBox ID="txtConfirmPassword" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="form-group">
-                    <label>Name and Surname</label>
+                    <label>Name</label>
                     <asp:TextBox ID="txtName" CssClass="form-control" runat="server"></asp:TextBox>
+                    <label>Surname</label>
+                    <asp:TextBox ID="txtSurname" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
                 <br />
                 <asp:Button CssClass="btn btn-primary" ID="btnSave" runat="server" Text="Save Changes" OnClick="btnSave_Click" />
@@ -150,7 +101,7 @@
                             <br />
                             <asp:FileUpload ID="fupImage" OnLoad="fupImage_Load" runat="server" CssClass="form-control" onchange="this.form.submit();" />
                             <div class="text-center">
-                                <asp:Image ID="imgNewProfile" runat="server" CssClass="img-fluid m-3" Width="200" Height="200" />
+                                <asp:Image ID="imgNewProfile" runat="server" CssClass="img-fluid m-3" Width="200" Height="200" onerror="this.src='/images/noimage.jpg'" />
                             </div>
                         </ContentTemplate>
                     </asp:UpdatePanel>

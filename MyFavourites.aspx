@@ -2,7 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">+
+    <br />
     <div>
         <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
     </div>
@@ -12,7 +13,7 @@
                 {
                     foreach (var item in listaItems)
                     { %>
-            <div class="col-sm-4">
+            <div class="col-sm-4" style="padding:20px">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title"><%= item.Name %></h5>
@@ -21,7 +22,6 @@
                         <h5>Precio: <%= item.Price.ToString("F2") %> </h5>
                         <p class="card-text">Category: <%=item.CategoryDescription.CategoryDescription%></p>
                         <p class="card-text">TradeMark: <%=item.TradeDesciption.TradeDescription %></p>
-                        <a href="#" class="btn btn-primary">Ver más</a>
                     </div>
                 </div>
             </div>
