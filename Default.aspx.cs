@@ -37,13 +37,12 @@ namespace FinalProyect_MaxiPrograma_LVL3
                 dgvList.Columns[8].Visible = false;
             }
             else if (((UserClass)Session["User"]).TypeUser != typeUser.Admin)
-            {
+            {     
                 dgvList.Columns[8].Visible = true;
-                dgvList.Columns[8].HeaderText = "Add favorites";
+                dgvList.HeaderRow.Cells[8].Text = "Add Favorites"; 
             }
             if (!IsPostBack)
             {
-
                 ddlCriterion.Items.Clear();
                 ddlCriterion.Items.Add("Contains:");
                 ddlCriterion.Items.Add("Begins with:");
@@ -99,23 +98,33 @@ namespace FinalProyect_MaxiPrograma_LVL3
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             string input = txtFilter.Text;
-            input = input.Replace(",", ".");
-            decimal number;
-            bool isValidNumber = decimal.TryParse(input, out number);
-
-            if (ddlField.SelectedItem.ToString() == "Price" && (!isValidNumber || input.Length > 10 || number < 0))
+            if (input.Contains(",") && ddlField.SelectedItem.ToString() == "Price")
             {
-                txtFilter.Text = number.ToString();
                 lblSearchWarning.Visible = true;
-                lblSearchWarning.Text = "Please, enter a number";
+                lblSearchWarning.Text = "Please, do not use ','; use '.' instead";
             }
             else
             {
-                ItemNegocio negocio = new ItemNegocio();
-                List<Items> temporal = negocio.filtrate(ddlField.SelectedItem.ToString(), ddlCriterion.SelectedItem.ToString(), txtFilter.Text.ToLower());
-                dgvList.DataSource = temporal;
-                dgvList.DataBind();
+                decimal number;
+                bool isValidNumber = decimal.TryParse(input, out number);
+                if (ddlField.SelectedItem.ToString() == "Price" && (!isValidNumber || input.Length > 10 || number < 0))
+                {
+                    lblSearchWarning.Visible = true;
+                    lblSearchWarning.Text = "Please, enter a number (0.00)";
+                }
+                else
+                {
+                    ItemNegocio negocio = new ItemNegocio();
+                    List<Items> temporal = negocio.filtrate(ddlField.SelectedItem.ToString(), ddlCriterion.SelectedItem.ToString(), txtFilter.Text.ToLower());
+                    dgvList.DataSource = temporal;
+                    dgvList.DataBind();
+                }
             }
+        }
+
+        protected void btnSearch_Click1(object sender, EventArgs e)
+        {
+
         }
     }
 }

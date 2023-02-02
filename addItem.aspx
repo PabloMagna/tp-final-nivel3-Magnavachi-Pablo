@@ -50,11 +50,11 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <asp:ImageButton ID="ImageButton" ImageUrl="~/Images/heartEmpty.png" runat="server" OnClick="ImageButton_Click" Height="20px" Width="20px" />
+                    <asp:ImageButton ID="ImageButton" autoposback="true" ImageUrl="~/Images/heartEmpty.png" runat="server" OnClick="ImageButton_Click" Height="20px" Width="20px" />
                 </div>
             </div>
             <div class="d-flex align-items-center col-6">
-                <img src="<% = txtUrlImage.Text%>" style="max-width: 300px; max-height: 300px;" onerror="this.src='images/default.png'">
+                <img src="<% = txtUrlImage.Text%>" onerror="this.src='Images/default.png'" style="max-width: 300px; max-height: 300px;">
             </div>
         </div>
     </div>

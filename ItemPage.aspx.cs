@@ -18,14 +18,6 @@ namespace FinalProyect_MaxiPrograma_LVL3
             if (!IsPostBack)
             {
                 UserFavoritesNegocio negocio = new UserFavoritesNegocio();
-                //if (negocio.exists(((UserClass)Session["User"]).Id, int.Parse(Request.QueryString["Id"])))
-                //{
-                //    cbxAddFavorites.Checked = true;
-                //}
-                //else
-                //{
-                //    cbxAddFavorites.Checked = false;
-                //}
                 if (negocio.exists(((UserClass)Session["User"]).Id, int.Parse(Request.QueryString["Id"])))
                 {
                     ImageButton.ImageUrl = "~/Images/heartFull.png";
@@ -43,20 +35,6 @@ namespace FinalProyect_MaxiPrograma_LVL3
                 Page.DataBind();
             }
         }
-
-        //protected void cbxAddFavorites_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    UserFavoritesNegocio negocio = new UserFavoritesNegocio();
-        //    if (cbxAddFavorites.Checked)
-        //    {
-        //        negocio.add(((UserClass)Session["User"]).Id, int.Parse(Request.QueryString["Id"]));
-        //    }
-        //    else
-        //    {
-        //        negocio.delete(((UserClass)Session["User"]).Id, int.Parse(Request.QueryString["Id"]));
-        //    }
-        //}
-
         protected void ImageButton_Click(object sender, ImageClickEventArgs e)
         {
             UserFavoritesNegocio negocio = new UserFavoritesNegocio();

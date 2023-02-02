@@ -74,15 +74,15 @@
             <div class="col-6">
                 <div class="form-group">
                     <label>Actual Password</label>
-                    <asp:TextBox ID="txtOldPass" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtOldPass" Type="password" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="form-group">
                     <label>New Password</label>
-                    <asp:TextBox ID="txtPassword" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtPassword" Type="password"  CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="form-group">
                     <label>Confirm New Password</label>
-                    <asp:TextBox ID="txtConfirmPassword" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtConfirmPassword" Type="password"  CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="form-group">
                     <label>Name</label>

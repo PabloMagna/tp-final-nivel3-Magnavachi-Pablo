@@ -196,18 +196,18 @@ namespace negocio
                             break;
                     }
                 }
-                else if (field == "Descripcion")
+                else if (field == "Description")
                 {
                     switch (standar)
                     {
                         case "Begins with:":
-                            querry += " and Description like '" + filter + "%'";
+                            querry += " and a.Descripcion like '" + filter + "%'";
                             break;
                         case "Ends with:":
-                            querry += " and Description like '%" + filter + "'";
+                            querry += " and a.Descripcion like '%" + filter + "'";
                             break;
                         case "Contains:":
-                            querry += " and Description like '%" + filter + "%'";
+                            querry += " and a.Descripcion like '%" + filter + "%'";
                             break;
                     }
                 }
@@ -216,13 +216,13 @@ namespace negocio
                     switch (standar)
                     {
                         case "Greater than:":
-                            querry += " and precio >" + filter;
+                            querry += " and ROUND(precio, 2) > " + filter;
                             break;
                         case "Lower than:":
-                            querry += " and precio <" + filter;
+                            querry += " and ROUND(precio, 2) < " + filter;
                             break;
                         case "Equal to:":
-                            querry += " and precio =" + filter;
+                            querry += " and ROUND(precio, 2) = " + filter;
                             break;
                     }
                 }
@@ -263,40 +263,6 @@ namespace negocio
             }
 
         }
-        //public List<Items> getItems(int userId)
-        //{
-        //    UserFavoritesNegocio favNegocio = new UserFavoritesNegocio();
-
-        //    List<Items> items = new List<Items>();
-        //    DataAccess data = new DataAccess();
-        //    string querry = "select a.Id idItem, Codigo, Nombre, a.Descripcion description, ImagenUrl, Precio, m.Descripcion TradeDescription, c.Descripcion CategoryDescription, m.Id marcaid, c.Id categoriaid from ARTICULOS a, MARCAS m, CATEGORIAS c JOIN UserFavorites f ON idItem = f.idItem WHERE f.idUser= @userId AND a.Id = f.idItem and IdMarca=m.Id and IdCategoria=c.Id";
-        //    data.settingQuery(querry);
-        //    data.settingParametter("@userId", userId);
-        //    data.executeQuery();
-        //    while (data.Reader.Read())
-        //    {
-        //        Items aux = new Items();
-        //        aux.Id = (int)data.Reader["idItem"];
-        //        aux.ItemCode = (string)data.Reader["Codigo"];
-        //        aux.Name = (string)data.Reader["Nombre"];
-        //        aux.Description = (string)data.Reader["description"];
-        //        aux.UrlImage = (string)data.Reader["imagenUrl"];
-        //        aux.Price = (decimal)data.Reader["precio"];
-        //        aux.CategoryDescription = new Category();
-        //        aux.CategoryDescription.CategoryId = (int)data.Reader["Categoriaid"];
-        //        aux.CategoryDescription.CategoryDescription = (string)data.Reader["CategoryDescription"];
-        //        aux.TradeDesciption = new Trademarks();
-        //        aux.TradeDesciption.TradeId = (int)data.Reader["marcaid"];
-        //        aux.TradeDesciption.TradeDescription = (string)data.Reader["TradeDescription"];
-        //        items.Add(aux);
-        //    }
-        //    data.closeConnection();
-        //    if (items.Count > 0)
-        //    {
-        //        return items;
-        //    }
-        //    return null;
-        //}
         public List<Items> getItems(int userId)
         {
             UserFavoritesNegocio favNegocio = new UserFavoritesNegocio();
