@@ -3,13 +3,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="mx-auto  bg-white rounded-md"" style="margin:4%">
+    <div class="mx-auto  bg-white rounded-md"" style="margin:2%">
         <div class="row" style="padding:2%">
             <div class="col-6">
                 <div class="col-6">
                     <div class="mb-3">
                         <asp:Label ID="labelTitle" CssClass="form-label" Font-Size="X-Large" Text="Add Item" runat="server" />
-
+                        <asp:ImageButton ID="ImageButton" autoposback="true" ImageUrl="~/Images/heartEmpty.png" runat="server" OnClick="ImageButton_Click" Height="20px" Width="20px" />
                     </div>
                     <div class="mb-3">
                         <label for="txtCode" class="form-label">Code</label>
@@ -46,12 +46,12 @@
                     </div>
                     <div class="mb-3">
                         <asp:Button CssClass="btn btn-primary" ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click" />
-
+                      <asp:Button CssClass="btn btn-danger" ID="btnDelete" runat="server" Text="Delete" Visible="false" OnClick="btnDelete_Click"/>
                     </div>
                 </div>
-                <div class="card-body">
+              <%--  <div class="card-body">
                     <asp:ImageButton ID="ImageButton" autoposback="true" ImageUrl="~/Images/heartEmpty.png" runat="server" OnClick="ImageButton_Click" Height="20px" Width="20px" />
-                </div>
+                </div>--%>
             </div>
             <div class="d-flex align-items-center col-6">
                 <img src="<% = txtUrlImage.Text%>" onerror="this.src='Images/default.png'" style="max-width: 300px; max-height: 300px;">

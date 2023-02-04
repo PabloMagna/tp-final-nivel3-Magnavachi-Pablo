@@ -11,7 +11,7 @@
             <p class="card-text"><%= item.Description %></p>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">Precio: <%= item.Price %></li>
+            <li class="list-group-item">Precio: <%= string.Format("{0:0.00}", item.Price) %></li>
             <li class="list-group-item"><%= item.TradeDesciption.TradeDescription %></li>
             <li class="list-group-item"><%= item.CategoryDescription.CategoryDescription %></li>
         </ul>

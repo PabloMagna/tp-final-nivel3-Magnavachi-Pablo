@@ -17,21 +17,23 @@ namespace FinalProyect_MaxiPrograma_LVL3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            UserClass user = (UserClass)Session["user"];
-            if (user.TypeUser == typeUser.Admin)
+            if (!IsPostBack)
             {
-                Session.Add("Error", "You don't have permission to modify this profile. Please Loguin with User(no admin) to access this page.");
-                Response.Redirect("Error.aspx");
+                UserClass user = (UserClass)Session["user"];
+                if (user.TypeUser == typeUser.Admin)
+                {
+                    Session.Add("Error", "You don't have permission to modify this profile. Please Loguin with User(no admin) to access this page.");
+                    Response.Redirect("Error.aspx");
+                }
+                if (user.UserName == null)
+                    txtName.Text = "";
+                else
+                    txtName.Text = user.UserName;
+                if (user.UserSurname == null)
+                    txtSurname.Text = "";
+                else
+                    txtSurname.Text = user.UserSurname;
             }
-            if (user.UserName == null)
-                txtName.Text = "";
-            else
-                txtName.Text = user.UserName;
-            if (user.UserSurname == null)
-                txtSurname.Text = "";
-            else
-                txtSurname.Text = user.UserSurname;
         }
         protected void uploadImage()
         {
@@ -107,16 +109,13 @@ namespace FinalProyect_MaxiPrograma_LVL3
                 fupImage.SaveAs(imagePath + fileName);
                 url = fileName;
             }
-            UserClass aux = new UserClass(user.Email, pass, false);
-            aux.UserName = user.UserName;
-            aux.UserSurname = user.UserSurname;
-            aux.TypeUser = user.TypeUser;
-            aux.UrlImagen = url;
-            aux.Id = user.Id;
-            negocio.modify(aux);
+            user.UserName = txtName.Text;
+            user.UserSurname = txtSurname.Text;
+            user.UrlImagen = url;
+            negocio.modify(user);
+            Session["user"] = user;
             Response.Redirect("Default.aspx", false);
-            Session["User"] = null;
-            Session.Add("User", aux);
+
         }
     }
 }

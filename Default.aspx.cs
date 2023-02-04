@@ -84,7 +84,7 @@ namespace FinalProyect_MaxiPrograma_LVL3
                 ddlCriterion.Items.Clear();
                 ddlCriterion.Items.Add("Equal to:");
                 ddlCriterion.Items.Add("Greater than:");
-                ddlCriterion.Items.Add("Less than:");
+                ddlCriterion.Items.Add("Lower than:");
             }
             else
             {
@@ -97,6 +97,7 @@ namespace FinalProyect_MaxiPrograma_LVL3
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
+            lblSearchWarning.Visible = false;
             string input = txtFilter.Text;
             if (input.Contains(",") && ddlField.SelectedItem.ToString() == "Price")
             {

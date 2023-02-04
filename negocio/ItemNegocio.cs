@@ -298,6 +298,16 @@ namespace negocio
             return null;
         }
 
+        public void deleteItem(int idItem)
+        {
+            DataAccess data = new DataAccess();
+            string querry = "delete from ARTICULOS where id = @id";
+            data.settingQuery(querry);
+            data.settingParametter("@id", idItem);
+            data.executeQuery();
+            data.closeConnection();
+        }
+
     }
 
 }

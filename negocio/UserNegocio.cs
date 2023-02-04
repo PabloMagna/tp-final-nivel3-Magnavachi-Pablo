@@ -101,5 +101,46 @@ namespace FinalProyect_MaxiPrograma_LVL3.negocio
                 data.closeConnection();
             }
         }
+        public UserClass getUser(int id)
+        {
+            DataAccess data = new DataAccess();
+            try
+            {
+                data.settingQuery("select id, email, pass, admin, urlImagenPerfil, nombre, apellido from USERS where id = @id");
+                data.settingParametter("@id", id);
+                data.executeQuery();
+                while (data.Reader.Read())
+                {
+                    UserClass user = new UserClass();
+                    user.Id = (int)data.Reader["id"];
+                    user.Email = (string)data.Reader["email"];
+                    user.Password = (string)data.Reader["pass"];
+                    user.TypeUser = (bool)data.Reader["admin"] ? typeUser.Admin : typeUser.User;
+                    if (data.Reader["nombre"] is DBNull)
+                        user.UserName = "No Name";
+                    else
+                        user.UserName = (string)data.Reader["nombre"];
+                    if (data.Reader["apellido"] is DBNull)
+                        user.UserSurname = "No Surname";
+                    else
+                        user.UserSurname = (string)data.Reader["apellido"];
+                    if (data.Reader["UrlImagenPerfil"] is DBNull)
+                        user.UrlImagen = "/Images/Default.png";
+                    else
+                        user.UrlImagen = (string)data.Reader["UrlImagenPerfil"];
+                    return user;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                data.closeConnection();
+            }
+        }
     }
 }

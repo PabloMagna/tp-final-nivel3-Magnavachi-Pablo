@@ -40,7 +40,7 @@
                     <asp:BoundField DataField="ItemCode" HeaderText="Code" />
                     <asp:BoundField DataField="Name" HeaderText="Name" />
                     <asp:BoundField DataField="Description" HeaderText="Description" />
-                    <asp:BoundField DataField="Price" HeaderText="Price" DataFormatString="{0:0.00}"  />
+                    <asp:BoundField DataField="Price" HeaderText="Price" DataFormatString="{0:0.00}" HtmlEncode="False"  />
                     <asp:BoundField DataField="UrlImage" Visible="false" HeaderText="Image" />
                     <asp:BoundField DataField="TradeDesciption" HeaderText="Trademark" />
                     <asp:BoundField DataField="CategoryDescription" HeaderText="Category" />

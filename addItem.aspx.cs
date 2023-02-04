@@ -18,9 +18,9 @@ namespace FinalProyect_MaxiPrograma_LVL3
         {
             TrademarkNegocio trade = new TrademarkNegocio();
             CategoryNegocio category = new CategoryNegocio();
+            UserFavoritesNegocio negocio = new UserFavoritesNegocio();
             if (!IsPostBack)
             {
-                UserFavoritesNegocio negocio = new UserFavoritesNegocio();
                 if ((Request.QueryString["Id"]) != null && negocio.exists(((UserClass)Session["User"]).Id, int.Parse(Request.QueryString["Id"])))
                 {
                     ImageButton.ImageUrl = "~/Images/heartFull.png";
@@ -53,12 +53,13 @@ namespace FinalProyect_MaxiPrograma_LVL3
                     labelTitle.Text = "Modify Item";
                     txtCode.Text = item.ItemCode;
                     txtItemDescription.Text = item.Description;
-                    txtPrice.Text = item.Price.ToString();
+                    txtPrice.Text = item.Price.ToString("0.00");
                     txtUrlImage.Text = item.UrlImage;
                     txtName.Text = item.Name;
                     ddlTradeDescription.SelectedValue = item.TradeDesciption.ToString();
                     ddlCategoryDescription.SelectedValue = item.CategoryDescription.ToString();
                     btnAdd.Text = "Modify";
+                    btnDelete.Visible = true;
                 }
             }
 
@@ -68,7 +69,7 @@ namespace FinalProyect_MaxiPrograma_LVL3
         {
             string pattern = "[A-Z]{1}[0-9]{2}";
             decimal number;
-            bool isValidNumber = decimal.TryParse(txtPrice.Text, out number);
+            bool isValidNumber = decimal.TryParse(txtPrice.Text.Replace(",", "."), out number);
             try
             {
                 if (!Regex.IsMatch(txtCode.Text, pattern))
@@ -94,7 +95,7 @@ namespace FinalProyect_MaxiPrograma_LVL3
                     ItemNegocio negocio = new ItemNegocio();
                     item.Name = txtName.Text;
                     item.ItemCode = txtCode.Text;
-                    item.Price = decimal.Parse(txtPrice.Text);
+                    item.Price = number;
                     if (txtItemDescription.Text != "")
                         item.Description = txtItemDescription.Text;
                     else
@@ -108,10 +109,9 @@ namespace FinalProyect_MaxiPrograma_LVL3
                     trade.TradeDescription = ddlTradeDescription.Text;
                     item.TradeDesciption = trade;
                     Category cate = new Category();
-                    cate.CategoryId = int.Parse(ddlTradeDescription.SelectedValue);
+                    cate.CategoryId = int.Parse(ddlCategoryDescription.SelectedValue);
                     cate.CategoryDescription = ddlCategoryDescription.Text;
                     item.CategoryDescription = cate;
-
                     List<Items> temporal = (List<Items>)Session["ItemList"];
                     if (Request.QueryString["Id"] == null)
                     {
@@ -124,6 +124,7 @@ namespace FinalProyect_MaxiPrograma_LVL3
                         aux = item;
                         negocio.modify(aux, int.Parse(Request.QueryString["Id"]));
                     }
+                    Session["ItemList"] = negocio.toListWithProcedure();
                     Response.Redirect("Default.aspx");
                 }
             }
@@ -134,6 +135,7 @@ namespace FinalProyect_MaxiPrograma_LVL3
             }
 
         }
+
 
         protected void txtUrlImage_TextChanged(object sender, EventArgs e)
         {
@@ -153,6 +155,26 @@ namespace FinalProyect_MaxiPrograma_LVL3
                 negocio.delete(((UserClass)Session["User"]).Id, int.Parse(Request.QueryString["Id"]));
                 ImageButton.ImageUrl = "~/Images/heartEmpty.png";
             }
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            ItemNegocio itemNego = new ItemNegocio();
+            UserFavoritesNegocio favoriteNego = new UserFavoritesNegocio();
+            try
+            {
+                favoriteNego.deleteItem(int.Parse(Request.QueryString["Id"]));
+                itemNego.deleteItem(int.Parse(Request.QueryString["Id"]));
+                List<Items> temporal = (List<Items>)Session["ItemList"];
+                temporal.Remove(temporal.Find(x => x.Id == int.Parse(Request.QueryString["Id"])));
+                Session["ItemList"] = itemNego.toListWithProcedure();
+                Response.Redirect("Default.aspx");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
     }
 }

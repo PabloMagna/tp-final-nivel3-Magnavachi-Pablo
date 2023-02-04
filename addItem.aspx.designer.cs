@@ -24,6 +24,15 @@ namespace FinalProyect_MaxiPrograma_LVL3
         protected global::System.Web.UI.WebControls.Label labelTitle;
 
         /// <summary>
+        /// Control ImageButton.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImageButton;
+
+        /// <summary>
         /// Control txtCode.
         /// </summary>
         /// <remarks>
@@ -123,12 +132,12 @@ namespace FinalProyect_MaxiPrograma_LVL3
         protected global::System.Web.UI.WebControls.Button btnAdd;
 
         /// <summary>
-        /// Control ImageButton.
+        /// Control btnDelete.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageButton;
+        protected global::System.Web.UI.WebControls.Button btnDelete;
     }
 }

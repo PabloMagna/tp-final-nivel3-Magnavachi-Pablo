@@ -20,6 +20,7 @@ namespace FinalProyect_MaxiPrograma_LVL3.dominio
         public typeUser TypeUser { get; set; }
         public string UrlImagen { get; set; }
 
+        public UserClass() { }
         public UserClass(string email,string pass, bool type)
         {
             Password = pass;

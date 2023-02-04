@@ -63,6 +63,12 @@ namespace FinalProyect_MaxiPrograma_LVL3
             data.closeConnection();
             return lista;
         }
-
+        public void deleteItem(int idItem)
+        {
+            DataAccess data = new DataAccess();
+            data.settingQuery("delete from FAVORITOS where IdArticulo = @idItem");
+            data.settingParametter("@idItem", idItem);
+            data.executeAction();
+        }
     }
 }
