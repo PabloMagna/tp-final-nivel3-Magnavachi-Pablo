@@ -15,36 +15,56 @@ namespace FinalProyect_MaxiPrograma_LVL3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                imgNewImage.ImageUrl = "./Images/noImage.png";
+            }
         }
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            if (txtPassword.Text == txtConfirmPassword.Text)
+            UserClass user = new UserClass();
+            UserNegocio negocio = new UserNegocio();
+            string pattern = @"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"
+                           + "@"
+                           + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$";
+            lblWarningConfirm.Visible = false;
+            if (!System.Text.RegularExpressions.Regex.IsMatch(txtEmail.Text, pattern))
             {
-                
-                UserClass user = new UserClass(txtEmail.Text, txtPassword.Text, false);
-                UserNegocio negocio = new UserNegocio();
-                if (inpImage.PostedFile.FileName != "")
-                {
-                    string imagePath = Server.MapPath("./Images/");
-                    inpImage.PostedFile.SaveAs(imagePath + "profile-" + user.Id + ".jpg");
-                    user.UrlImagen = "profile-" + user.Id + ".jpg";
-                }
-                else
-                {
-                    user.UrlImagen = "noImage.jpg";
-                }
-                user.UserName = txtName.Text;
-                user.UserSurname = txtPassword.Text;
-                negocio.register(user);
-
-                // Redirect to the login page
-                Response.Redirect("Login.aspx");
+                lblWarningEmail.Visible = true;
+                lblWarningEmail.Text = "Please, write a valid Email.";
+            }
+            else if (txtPassword.Text == "")
+            {
+                lblWarningEmail.Visible = false;
+                lblWarningPass.Visible = true;
+                lblWarningPass.Text = "Please,write a valid Password";
+            }
+            else if (txtPassword.Text != txtConfirmPassword.Text)
+            {
+                lblWarningPass.Visible = false;
+                lblWarningConfirm.Visible = true;
+                lblWarningConfirm.Text = "Password didn't match";
             }
             else
             {
-                Session["Error"] = "Passwords do not match.";
+                user.Email = txtEmail.Text;
+                user.Password = txtPassword.Text;
+                string imagePath = Server.MapPath("./Images/");
+                user.UrlImagen = "toModify";
+                if (txtName.Text == "")
+                    user.UserName = "No Name";
+                else
+                    user.UserName = txtName.Text;
+                if (txtSurname.Text == "")
+                    user.UserSurname = "No Surname";
+                else
+                    user.UserSurname = txtPassword.Text;
+                int idUser = negocio.register(user);
+                fupImage.PostedFile.SaveAs(imagePath + "profile-" + idUser + ".png");
+                negocio.correctImageUrl(idUser);
+
+                Session.Add("Error", "Register Complete succesfully, please login.");
                 Response.Redirect("Error.aspx");
             }
         }

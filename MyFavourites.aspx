@@ -4,9 +4,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">+
     <br />
-    <div>
-        <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
-    </div>
     <div class="card text-center">
         <div class="row">
             <% if (listaItems != null)

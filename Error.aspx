@@ -8,5 +8,5 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Label ID="lblError" runat="server" CssClass="text-white" Text="Error"></asp:Label>
+    <asp:Label style="margin-top:2%" ID="lblError" runat="server" CssClass="text-white" Text="Error"></asp:Label>
 </asp:Content>

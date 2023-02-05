@@ -122,10 +122,5 @@ namespace FinalProyect_MaxiPrograma_LVL3
                 }
             }
         }
-
-        protected void btnSearch_Click1(object sender, EventArgs e)
-        {
-
-        }
     }
 }

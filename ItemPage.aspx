@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="card text-center">
+    <div class="card text-center" style="margin-top:2%">
     <img class="card-img-top" src="<%= item.UrlImage %>" onerror="this.src='Images/default.png'" alt="<%= item.Name %>" style="max-width: 200px; max-height: 200px; margin: 0 auto; display: block; object-fit: contain;">
 
         <div class="card-body">

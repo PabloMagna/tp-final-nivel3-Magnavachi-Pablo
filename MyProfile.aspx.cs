@@ -25,6 +25,7 @@ namespace FinalProyect_MaxiPrograma_LVL3
                     Session.Add("Error", "You don't have permission to modify this profile. Please Loguin with User(no admin) to access this page.");
                     Response.Redirect("Error.aspx");
                 }
+                imgNewImage.ImageUrl = user.UrlImagen;
                 if (user.UserName == null)
                     txtName.Text = "";
                 else
@@ -35,40 +36,6 @@ namespace FinalProyect_MaxiPrograma_LVL3
                     txtSurname.Text = user.UserSurname;
             }
         }
-        protected void uploadImage()
-        {
-            if (fupImage.HasFile)
-            {
-                // Obtener la ruta de la imagen
-                string filePath = fupImage.FileName;
-                // Establecer la ruta de la imagen en el control Image
-                imgNewProfile.ImageUrl = "~/Images/" + filePath;
-            }
-        }
-
-
-        protected void fupImage_Load(object sender, EventArgs e)
-        {
-            UserClass user = (UserClass)Session["user"];
-            if (fupImage.HasFile)
-            {
-                string imagePath = Server.MapPath("~/Images/");
-                string fileName = "profile-" + user.Id + Path.GetExtension(fupImage.FileName);
-                if (File.Exists(imagePath + fileName))
-                {
-                    File.Delete(imagePath + fileName);
-                }
-                fupImage.SaveAs(imagePath + fileName);
-                user.UrlImagen = fileName;
-                imgNewProfile.ImageUrl = "~/Images/" + fileName;
-                Session["user"] = user; // Actualizar información del usuario en la sesión
-            }
-            else
-            {
-                imgNewProfile.ImageUrl = "~/Images/" + user.UrlImagen;
-            }
-        }
-
         protected void btnSave_Click(object sender, EventArgs e)
         {
             UserNegocio negocio = new UserNegocio();
@@ -97,7 +64,6 @@ namespace FinalProyect_MaxiPrograma_LVL3
                 Session.Add("Error", "Incorrect  Pasword");
                 Response.Redirect("Error.aspx");
             }
-            string url = user.UrlImagen;
             if (fupImage.HasFile)
             {
                 string imagePath = Server.MapPath("~/Images/");
@@ -107,11 +73,11 @@ namespace FinalProyect_MaxiPrograma_LVL3
                     File.Delete(imagePath + fileName);
                 }
                 fupImage.SaveAs(imagePath + fileName);
-                url = fileName;
             }
+            if (user.UrlImagen == null)
+                negocio.correctImageUrl(user.Id);
             user.UserName = txtName.Text;
             user.UserSurname = txtSurname.Text;
-            user.UrlImagen = url;
             negocio.modify(user);
             Session["user"] = user;
             Response.Redirect("Default.aspx", false);

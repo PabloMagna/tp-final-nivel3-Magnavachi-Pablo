@@ -22,7 +22,8 @@ namespace FinalProyect_MaxiPrograma_LVL3
             listaItems = negocioItem.getItems(idUser);
             if (listaItems==null)
             {
-                lblError.Text = "There's no items in your favourites list";
+                Session["Error"] = "There're no items in your favourites list.";
+                Response.Redirect("Error.aspx");
             }
         }
     }

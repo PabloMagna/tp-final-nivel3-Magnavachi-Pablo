@@ -1,16 +1,25 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="MyProfile.aspx.cs" Inherits="FinalProyect_MaxiPrograma_LVL3.MyProfile" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script>
-        function uploadImage() {
-            var fileUpload = document.getElementById("<%=fupImage.ClientID%>");
-            var imgNewProfile = document.getElementById("<%=imgNewProfile.ClientID%>");
-            if (fileUpload.value != "") {
-                imgNewProfile.src = URL.createObjectURL(fileUpload.files[0]);
+    <script type="text/javascript">
+        function PreviewImage() {
+            var preview = document.getElementById("imgNewImage");
+            var file = document.getElementById("fupImage").files[0];
+            var reader = new FileReader();
+
+            reader.onloadend = function () {
+                preview.src = reader.result;
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = "";
             }
         }
     </script>
+
     <style>
-        /* Agrega tus estilos aquí */
         .form-control {
             width: 100%;
             padding: 12px 20px;
@@ -67,8 +76,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager runat="server"></asp:ScriptManager>
     <asp:Label ID="Label1" runat="server" Text="Register"></asp:Label>
-    <br />
-    <br />
     <div class="profile-container">
         <div class="row">
             <div class="col-6">
@@ -78,11 +85,11 @@
                 </div>
                 <div class="form-group">
                     <label>New Password</label>
-                    <asp:TextBox ID="txtPassword" Type="password"  CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtPassword" Type="password" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="form-group">
                     <label>Confirm New Password</label>
-                    <asp:TextBox ID="txtConfirmPassword" Type="password"  CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtConfirmPassword" Type="password" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="form-group">
                     <label>Name</label>
@@ -99,9 +106,12 @@
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
                             <br />
-                            <asp:FileUpload ID="fupImage" OnLoad="fupImage_Load" runat="server" CssClass="form-control" onchange="this.form.submit();" />
+                            <asp:FileUpload ID="fupImage" ClientIDMode="Static" runat="server" CssClass="form-control" onchange="PreviewImage()" />
                             <div class="text-center">
-                                <asp:Image ID="imgNewProfile" runat="server" CssClass="img-fluid m-3" Width="200" Height="200" onerror="this.src='/images/noimage.jpg'" />
+                                <asp:Label ID="lblNewImage" runat="server" Text="New Image"></asp:Label>
+                            </div>
+                            <div class="text-center">
+                                <asp:Image ID="imgNewImage" ClientIDMode="Static" runat="server" CssClass="img-fluid m-3" Width="200" Height="200" onerror="this.src='/images/noimage.jpg'" />
                             </div>
                         </ContentTemplate>
                     </asp:UpdatePanel>

@@ -95,6 +95,25 @@ namespace negocio
             command.CommandType = System.Data.CommandType.StoredProcedure;
             command.CommandText = sp;
         }
+        public object executeScalar()
+        {
+            command.Connection = conection;
+            object result = null;
+            try
+            {
+                conection.Open();
+                result = command.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conection.Close();
+            }
+            return result;
+        }
 
     }
 }

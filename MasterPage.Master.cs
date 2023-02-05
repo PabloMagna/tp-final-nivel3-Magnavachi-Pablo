@@ -21,7 +21,7 @@ namespace FinalProyect_MaxiPrograma_LVL3
                 else
                 {
                     UserClass user = (UserClass)Session["User"];
-                    imgProfile.ImageUrl = "~/Images/" + user.UrlImagen;
+                    imgProfile.ImageUrl = user.UrlImagen;
                     //lblUnderImage.Text = user.UserName;
                 }
             }
@@ -30,7 +30,7 @@ namespace FinalProyect_MaxiPrograma_LVL3
                 if (Security.isLogged(Session["User"]))
                 {
                     UserClass user = (UserClass)Session["User"];
-                    imgProfile.ImageUrl = "~/Images/" + user.UrlImagen;
+                    imgProfile.ImageUrl = user.UrlImagen;
                 }
             }
 
@@ -45,6 +45,16 @@ namespace FinalProyect_MaxiPrograma_LVL3
         protected void imgProfile_Click(object sender, ImageClickEventArgs e)
         {
             Response.Redirect("MyProfile.aspx");
+        }
+
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("login.aspx");
+        }
+
+        protected void btnRegister_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("register.aspx");
         }
     }
 }

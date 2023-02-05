@@ -42,6 +42,15 @@ namespace FinalProyect_MaxiPrograma_LVL3
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
 
         /// <summary>
+        /// Control lblWarningEmail.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblWarningEmail;
+
+        /// <summary>
         /// Control Label3.
         /// </summary>
         /// <remarks>
@@ -60,6 +69,15 @@ namespace FinalProyect_MaxiPrograma_LVL3
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
 
         /// <summary>
+        /// Control lblWarningPass.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblWarningPass;
+
+        /// <summary>
         /// Control Label4.
         /// </summary>
         /// <remarks>
@@ -76,6 +94,15 @@ namespace FinalProyect_MaxiPrograma_LVL3
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtConfirmPassword;
+
+        /// <summary>
+        /// Control lblWarningConfirm.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblWarningConfirm;
 
         /// <summary>
         /// Control Label7.
@@ -123,22 +150,22 @@ namespace FinalProyect_MaxiPrograma_LVL3
         protected global::System.Web.UI.WebControls.Label Label6;
 
         /// <summary>
-        /// Control inpImage.
+        /// Control fupImage.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile inpImage;
+        protected global::System.Web.UI.WebControls.FileUpload fupImage;
 
         /// <summary>
-        /// Control imgNewProfile.
+        /// Control imgNewImage.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgNewProfile;
+        protected global::System.Web.UI.WebControls.Image imgNewImage;
 
         /// <summary>
         /// Control btnRegister.
