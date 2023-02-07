@@ -82,6 +82,7 @@
                 <div class="form-group">
                     <label>Actual Password</label>
                     <asp:TextBox ID="txtOldPass" Type="password" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:Label visible="false" ID="lblPass" ForeColor="Red" runat="server" />
                 </div>
                 <div class="form-group">
                     <label>New Password</label>
@@ -90,6 +91,7 @@
                 <div class="form-group">
                     <label>Confirm New Password</label>
                     <asp:TextBox ID="txtConfirmPassword" Type="password" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:Label visible="false" ID="lblNewPass" ForeColor="Red" runat="server" />
                 </div>
                 <div class="form-group">
                     <label>Name</label>
@@ -107,6 +109,7 @@
                         <ContentTemplate>
                             <br />
                             <asp:FileUpload ID="fupImage" ClientIDMode="Static" runat="server" CssClass="form-control" onchange="PreviewImage()" />
+                            <asp:Label id="lblImagenError" ForeColor="Red" Visible="false" runat="server" />
                             <div class="text-center">
                                 <asp:Label ID="lblNewImage" runat="server" Text="New Image"></asp:Label>
                             </div>

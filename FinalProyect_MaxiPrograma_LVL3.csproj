@@ -70,8 +70,6 @@
     <Content Include="Default.aspx" />
     <Content Include="dominio\bin\Debug\dominio.dll" />
     <Content Include="dominio\bin\Debug\dominio.pdb" />
-    <Content Include="Images\corazon lleno.png" />
-    <Content Include="Images\corazon vacio.png" />
     <Content Include="dominio\obj\Debug\dominio.csproj.FileListAbsolute.txt" />
     <Content Include="dominio\obj\Debug\dominio.dll" />
     <Content Include="dominio\obj\Debug\dominio.pdb" />
@@ -96,6 +94,8 @@
     <Content Include="negocio\obj\Debug\negocio.pdb" />
     <Content Include="ProyectoScript.js" />
     <Content Include="Register.aspx" />
+    <Content Include="script_db\CATALOGOWEBDB.sql" />
+    <Content Include="script_db\PROCEDURES.sql" />
     <Content Include="ShoppKartForm.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>

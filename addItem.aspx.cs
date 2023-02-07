@@ -99,7 +99,7 @@ namespace FinalProyect_MaxiPrograma_LVL3
                     if (txtItemDescription.Text != "")
                         item.Description = txtItemDescription.Text;
                     else
-                        item.Description = "(not description provided)";
+                        item.Description = "(no description provided)";
                     if (txtUrlImage.Text != "")
                         item.UrlImage = txtUrlImage.Text;
                     else

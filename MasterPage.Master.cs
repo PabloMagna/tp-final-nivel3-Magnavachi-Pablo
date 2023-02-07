@@ -21,8 +21,7 @@ namespace FinalProyect_MaxiPrograma_LVL3
                 else
                 {
                     UserClass user = (UserClass)Session["User"];
-                    imgProfile.ImageUrl = user.UrlImagen;
-                    //lblUnderImage.Text = user.UserName;
+                    imgProfile.ImageUrl = user.UrlImagen + "?v=" + DateTime.Now.Ticks.ToString();
                 }
             }
             else
@@ -30,7 +29,7 @@ namespace FinalProyect_MaxiPrograma_LVL3
                 if (Security.isLogged(Session["User"]))
                 {
                     UserClass user = (UserClass)Session["User"];
-                    imgProfile.ImageUrl = user.UrlImagen;
+                    imgProfile.ImageUrl = user.UrlImagen +"?v=" + DateTime.Now.Ticks.ToString();
                 }
             }
 

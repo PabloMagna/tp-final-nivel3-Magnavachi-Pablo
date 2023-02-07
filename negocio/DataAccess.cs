@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using dominio;
 using negocio;
+using System.Configuration;
 
 namespace negocio
 {
@@ -21,7 +22,7 @@ namespace negocio
         }
         public DataAccess ()
         {
-            conection = new SqlConnection("server=.\\SQLEXPRESS; database = CATALOGO_WEB_DB; integrated security=true");
+            conection = new SqlConnection(ConfigurationManager.AppSettings["cadenaConexion"]);
             command = new SqlCommand();
         }
         public void settingQuery(string query)
